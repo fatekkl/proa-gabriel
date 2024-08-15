@@ -1,4 +1,4 @@
-package Exercicios.Logica
+package exercicios.logica
 fun main () {
     fun primeiro () {
         println("Insira um número: ")

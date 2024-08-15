@@ -108,5 +108,78 @@ fun main() {
                 "O maior è: ${list.maxOrNull()}")
     }
 
-    sexto()
+    fun setimo() {
+        val list = mutableListOf<Int>()
+
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+
+        var soma = 0
+
+        for (i in list) {
+            if (i <= 72) {
+                soma += i
+            }
+        }
+
+        println("\n A soma è $soma")
+
+        println(list)
+    }
+
+    fun oitavo() {
+        val list = mutableListOf<Int>()
+
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+
+        for (i in list) {
+            if (i < 0 || i > 10) {
+                list.remove(i)
+            }
+        }
+
+        var soma = 0
+
+        for (i in list) {
+            soma += i
+        }
+
+        val media = soma / list.size
+
+        if (media > 5 ) {
+            println("Você passou no teste")
+        } else {
+            println("Tente novamente")
+        }
+
+
+    }
+
+    fun nono() {
+        println("Qual ano voce nasceu? ")
+        val y = readln().toInt()
+
+        if (2024 - y < 16) {
+            println("Não pode votar")
+        } else {
+            println("Pode votar")
+        }
+    }
 }

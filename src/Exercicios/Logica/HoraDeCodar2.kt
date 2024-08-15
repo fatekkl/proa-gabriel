@@ -1,6 +1,7 @@
 package exercicios.logica
-fun main () {
-    fun primeiro () {
+
+fun main() {
+    fun primeiro() {
         println("Insira um número: ")
         var num = readln()
 
@@ -13,7 +14,7 @@ fun main () {
         println("\nO maior número é: $num")
     }
 
-    fun segundo () {
+    fun segundo() {
         println("Informe um valor: ")
         val num = readln().toInt()
 
@@ -24,7 +25,7 @@ fun main () {
         }
     }
 
-    fun terceiro () {
+    fun terceiro() {
         val nums = mutableListOf<Int>()
 
         println("Insira o primeiro valor: ")
@@ -40,4 +41,72 @@ fun main () {
 
         println(maior)
     }
+
+    fun quarto() {
+        val list = mutableListOf<Int>()
+
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+
+        println("Informe outro valor: ")
+        list.add(readln().toInt())
+
+        println("O ultimo valor: ")
+        list.add(readln().toInt())
+
+        val minor = list.minOrNull()
+
+        list.remove(minor)
+
+        println(list[0] + list[1])
+    }
+
+    fun quinto() {
+        val list = mutableListOf<Int>()
+
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+
+        println(list)
+
+        var media = 0
+
+        for(i in list) {
+            media += i
+        }
+
+        media /= list.size
+
+
+        println("A mèdia è: $media")
+    }
+
+    fun sexto() {
+        val list = mutableListOf<Int>()
+
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+        println("Informe um valor: ")
+        list.add(readln().toInt())
+
+        println("O primeiro è: ${list[0]}," +
+                "O ultimo è: ${list[list.size - 1]}," +
+                "O maior è: ${list.maxOrNull()}")
+    }
+
+    sexto()
 }

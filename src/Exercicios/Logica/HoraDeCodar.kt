@@ -92,6 +92,4 @@ fun main() {
 
         println(3.14*r.pow(2))
     }
-
-    circulo()
 }

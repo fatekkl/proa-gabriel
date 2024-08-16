@@ -207,7 +207,7 @@ fun main() {
         println("Feminino ou Masculino? 1|2")
         val num = readln().toInt()
 
-        println("Insira sua altura: ")
+        println("Insira sua altura, como 1.70: ")
         val h = readln().toDouble()
 
         var result = 0.0
@@ -218,6 +218,28 @@ fun main() {
         }
 
         println(result)
+    }
+
+    fun calc() {
+        println("Escolha entre: \n" +
+                "1: Adição \n" +
+                "2. Subtração\n" +
+                "3. Divisão\n" +
+                "4. Multiplicação")
+        val option = readln().toInt()
+
+        println("Agora selecione um nùmero: ")
+        val num = readln().toInt()
+        println("Agora selecione outro nùmero: ")
+        val num2 = readln().toInt()
+
+
+        when (option) {
+            1 -> println(num + num2)
+            2 -> println(num - num2)
+            3 -> println(num/num2)
+            4 -> println(num * num2)
+        }
     }
 
 }

@@ -202,4 +202,22 @@ fun main() {
             println("Pode votar")
         }
     }
+
+    fun decimo() {
+        println("Feminino ou Masculino? 1|2")
+        val num = readln().toInt()
+
+        println("Insira sua altura: ")
+        val h = readln().toDouble()
+
+        var result = 0.0
+
+        when (num) {
+            1 -> result = (62.1 * h) - 44.7
+            2 -> result = (72.7 * h) - 58
+        }
+
+        println(result)
+    }
+
 }

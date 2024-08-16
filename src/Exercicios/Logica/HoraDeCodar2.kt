@@ -37,7 +37,16 @@ fun main() {
         println("Insira o terceiro valor: ")
         nums.add(readln().toInt())
 
-        val maior = nums.maxOrNull()
+        var maior = nums[0]
+
+        for (i in nums) {
+            if (i > maior) {
+                maior = i
+            }
+        }
+
+        // solucao que usa funcao nativa do kotlin
+        // val maior = nums.maxOrNull()
 
         println(maior)
     }
@@ -54,10 +63,19 @@ fun main() {
         println("O ultimo valor: ")
         list.add(readln().toInt())
 
-        val minor = list.minOrNull()
+        var minor = list[0]
 
+        for (p in list) {
+            if (p < minor) {
+                minor = p
+            }
+        }
+
+
+
+//      solucao com funcao nativa do Kotlin
+//      val minor = list.minOrNull()
         list.remove(minor)
-
         println(list[0] + list[1])
     }
 
@@ -81,7 +99,7 @@ fun main() {
 
         var media = 0
 
-        for(i in list) {
+        for (i in list) {
             media += i
         }
 
@@ -103,9 +121,11 @@ fun main() {
         println("Informe um valor: ")
         list.add(readln().toInt())
 
-        println("O primeiro è: ${list[0]}," +
-                "O ultimo è: ${list[list.size - 1]}," +
-                "O maior è: ${list.maxOrNull()}")
+        println(
+            "O primeiro è: ${list[0]}," +
+                    "O ultimo è: ${list[list.size - 1]}," +
+                    "O maior è: ${list.maxOrNull()}"
+        )
     }
 
     fun setimo() {
@@ -163,7 +183,7 @@ fun main() {
 
         val media = soma / list.size
 
-        if (media > 5 ) {
+        if (media > 5) {
             println("Você passou no teste")
         } else {
             println("Tente novamente")

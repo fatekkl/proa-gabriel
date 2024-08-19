@@ -2,7 +2,7 @@ package exercicios.logica
 
 fun main () {
 
-    fun primeiro() {
+    fun primeiro()  {
         println("Insira um valor: ")
         val num = readln().toInt()
         var num2 = 0

@@ -151,7 +151,7 @@ fun main () {
         }
 
         println("${inside.size} numeros estão entre 24 e 42")
-        println("${outside.size} numeros estão fora 24 e 42")
+        println("${outside.size} numeros estão fora de 24 e 42")
     }
 
 }

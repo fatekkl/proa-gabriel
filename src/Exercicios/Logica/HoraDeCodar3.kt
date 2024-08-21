@@ -154,4 +154,6 @@ fun main () {
         println("${outside.size} numeros estão fora de 24 e 42")
     }
 
+    sexto()
+
 }

@@ -13,10 +13,10 @@ fun main() {
     fun menu(selected: Int?) {
         when (selected) {
             1 -> getBalance()
-            2 -> println("Você selecionou ${green}Extrato${reset}")
+            2 -> getExtrato()
             3 -> withdraw()
             4 -> println("Você selecionou ${green}Deposito${reset}")
-            5 -> println("Você selecionou ${green}Transferencia${reset}")
+            5 -> transfer()
             6 -> println("Você selecionou ${green}Sair${reset}")
             else -> println("Opcão invalida!")
         }
@@ -80,6 +80,12 @@ fun withdraw() {
             println("Transacão não autorizada!")
             return
         }
+
+        if (toWithdraw <= 0) {
+            println("Transacão não autorizada!")
+            return
+        }
+
         balance -= toWithdraw
 
         println("Você sacou ${green}$toWithdraw${reset}. Saldo atual: ${green}$balance${reset}")
@@ -87,4 +93,48 @@ fun withdraw() {
     }
     println("Credenciais Incorretas!")
     return
+}
+
+fun getExtrato() {
+    val compras = listOf("Compra1", "Compra2", "Compra3")
+
+
+    if (checkPassword()) {
+        println(
+            "Compras recentes: \n" +
+                    "${green}$compras${reset}"
+        )
+
+        return
+    }
+
+    println("Credenciais Invalidas!")
+    return
+}
+
+fun transfer() {
+    if (checkPassword()){
+        println("Informe o numero da conta que deseja enviar: ")
+        var accountNum = readln().toIntOrNull()
+        while (accountNum == null) {
+            println("Informe um numero valido: ")
+            accountNum = readln().toIntOrNull()
+        }
+
+        println("Informe o valor a ser transferido. Saldo Atual: ${green}$balance${reset}")
+        var toTransfer = readln().toIntOrNull()
+        while (toTransfer == null) {
+            println("Informe um valor que seja valido: ")
+            toTransfer = readln().toIntOrNull()
+        }
+
+        if (toTransfer <= balance) {
+            balance -= toTransfer
+
+            println("Transferencia efetuada!")
+            println("Seu saldo atual è: $green$balance$reset")
+        } else {
+            println("Operacao não autorizada!")
+        }
+    }
 }

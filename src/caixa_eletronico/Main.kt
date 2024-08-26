@@ -14,7 +14,7 @@ fun main() {
         when (selected) {
             1 -> getBalance()
             2 -> println("Você selecionou ${green}Extrato${reset}")
-            3 -> println("Você selecionou ${green}Saque!${reset}")
+            3 -> withdraw()
             4 -> println("Você selecionou ${green}Deposito${reset}")
             5 -> println("Você selecionou ${green}Transferencia${reset}")
             6 -> println("Você selecionou ${green}Sair${reset}")
@@ -53,14 +53,38 @@ fun main() {
 fun getBalance() {
     println("Você selecionou ${green}Saldo${reset} \n")
 
-    println("Insira sua senha: ")
-    val reqPassword = readln()
-
-    if (reqPassword == password) {
+    if (checkPassword()) {
         println("Seu saldo è: ${green}$balance${reset}")
     } else {
         println("Senha invalida")
     }
 
 
+}
+
+fun checkPassword(): Boolean {
+    println("Insira sua senha: ")
+    val reqPassword = readln()
+
+    return reqPassword == password
+}
+
+fun withdraw() {
+
+    if (checkPassword()) {
+        println("Digite a quantidade de saldo que você deseja sacar.")
+
+        val toWithdraw = readln().toDouble()
+
+        if (toWithdraw > balance) {
+            println("Transacão não autorizada!")
+            return
+        }
+        balance -= toWithdraw
+
+        println("Você sacou ${green}$toWithdraw${reset}. Saldo atual: ${green}$balance${reset}")
+        return
+    }
+    println("Credenciais Incorretas!")
+    return
 }

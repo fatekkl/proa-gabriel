@@ -1,13 +1,16 @@
-package caixa_eletronico
+package exercicios.logica
+
 
 
 const val green = "\u001B[32m"
 const val reset = "\u001B[0m"
 var balance: Double = 150.0
 var username: String = ""
-var password = "12345"
+var password = "3589"
 
 fun main() {
+
+
 
 
     fun menu(selected: Int?) {
@@ -15,9 +18,9 @@ fun main() {
             1 -> getBalance()
             2 -> getExtrato()
             3 -> withdraw()
-            4 -> println("Você selecionou ${green}Deposito${reset}")
+            4 -> depositar()
             5 -> transfer()
-            6 -> println("Você selecionou ${green}Sair${reset}")
+            6 -> println("$username, Foi um prazer ter você aqui!")
             else -> println("Opcão invalida!")
         }
     }
@@ -56,7 +59,7 @@ fun getBalance() {
     if (checkPassword()) {
         println("Seu saldo è: ${green}$balance${reset}")
     } else {
-        println("Senha invalida")
+        getBalance()
     }
 
 
@@ -90,9 +93,10 @@ fun withdraw() {
 
         println("Você sacou ${green}$toWithdraw${reset}. Saldo atual: ${green}$balance${reset}")
         return
+    } else {
+        withdraw()
     }
-    println("Credenciais Incorretas!")
-    return
+
 }
 
 fun getExtrato() {
@@ -106,10 +110,11 @@ fun getExtrato() {
         )
 
         return
+    } else {
+        getExtrato()
     }
 
-    println("Credenciais Invalidas!")
-    return
+
 }
 
 fun transfer() {
@@ -128,7 +133,7 @@ fun transfer() {
             toTransfer = readln().toIntOrNull()
         }
 
-        if (toTransfer <= balance) {
+        if (toTransfer <= balance && toTransfer > 0) {
             balance -= toTransfer
 
             println("Transferencia efetuada!")
@@ -136,5 +141,16 @@ fun transfer() {
         } else {
             println("Operacao não autorizada!")
         }
+    } else {
+        transfer()
     }
+}
+
+fun depositar() {
+    println("Insira o valor a ser depositado: ")
+    val num = readln().toInt()
+
+    balance += num
+
+    println("Seu saldo atual è: $green$balance$reset")
 }

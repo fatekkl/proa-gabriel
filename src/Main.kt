@@ -1,15 +1,12 @@
+import hotel.src.Hotel
+
 fun main() {
-    val list = mutableListOf<Int>(1, 2, 3, 4, 5, 6)
+
+
+    val hotel = Hotel()
 
 
 
-    list.forEach {
-        if (it <= 5) {
-            list.remove(it)
-        }
-    }
-
-    print(list)
-
+    hotel.start()
 
 }

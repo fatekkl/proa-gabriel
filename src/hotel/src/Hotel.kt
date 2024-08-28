@@ -3,9 +3,9 @@ package hotel.src
 class Hotel(
     private val hotelName: String = "Therabithia",
     private var guestName: String? = null,
-    private val rooms: Map<Int, Boolean> = mapOf(
+    private val rooms: MutableMap<Int, Boolean> = mutableMapOf(
         1 to false,
-        2 to false,
+        2 to true,
         3 to false,
         4 to false,
         5 to false,
@@ -26,7 +26,7 @@ class Hotel(
         20 to false
     )
 ) {
-
+    private val daily: Double = 150.0
     private var passReceived: String? = null
 
     fun start() {
@@ -68,6 +68,33 @@ class Hotel(
     }
 
     private fun registerRoom() {
-        println(rooms)
+        println("Informe a quantidade dias que pretende se hospedar, sendo no maximo 30 dias: ")
+
+        var days = readln().toInt()
+
+        while (days > 30 || days <= 0){
+            println("Informe um valor vàlido: ")
+            days = readln().toInt()
+        }
+
+        val total = days * daily
+
+        println("Escolha um quarto | 1-20")
+        var roomNumber = readln().toInt()
+
+        while(rooms[roomNumber] == true) {
+            println("Quarto ja ocupado, escolha outro: ")
+            roomNumber = readln().toInt()
+        }
+
+        println("Você confirma a reserva? Y/N")
+        val response = readln()
+        if (response == "Y" || response == "y") {
+            rooms[roomNumber] = true
+            println("Você reservou o quarto $roomNumber, os $days dias custarão $total reais")
+            println(rooms)
+        } else {
+            start()
+        }
     }
 }

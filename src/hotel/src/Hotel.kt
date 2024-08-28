@@ -30,7 +30,7 @@ class Hotel(
     private var passReceived: String? = null
 
     fun start() {
-        println("Bem vindo ao $hotelName")
+        println("Bem vindo ao hotel $hotelName")
         println("Qual seu nome? ")
         guestName = readln()
 

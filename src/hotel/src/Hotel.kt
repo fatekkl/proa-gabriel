@@ -59,12 +59,16 @@ class Hotel(
     private fun menu(option: Int) {
         when (option) {
             1 -> registerRoom()
-//            2 -> registerGuest()
+            2 -> registerGuest()
 //            3 -> gasStation()
 //            4 -> leave()
             else -> mistake()
 
         }
+    }
+
+    private fun registerGuest() {
+
     }
 
     private fun registerRoom() {

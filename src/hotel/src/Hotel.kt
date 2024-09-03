@@ -68,7 +68,37 @@ class Hotel(
     }
 
     private fun registerGuest() {
+        var gratuidades = 0
+        var meias = 0
+        var total = 0.0
+        var checker = false
+        while (checker != true) {
+            println("Insira o nome do hòspede: ")
+            val resposta = readln()
+            println("Insira a idade do hòspede, ou digite PARE")
+            val idade = readln()
 
+            if (resposta != "PARE" || idade != "PARE") {
+                when  {
+                    idade.toInt() < 6 -> {
+                        println("$resposta possui gratuidade")
+                        gratuidades++
+                    }
+                    idade.toInt() > 60 -> {
+                        println("$resposta paga meia")
+                        meias++
+                        total += daily / 2
+                    }
+                }
+            } else {
+                checker = true
+            }
+
+        }
+
+        println("Gratuidades: $gratuidades \n" +
+                "Meias: $meias \n" +
+                "Total: $total")
     }
 
     private fun registerRoom() {

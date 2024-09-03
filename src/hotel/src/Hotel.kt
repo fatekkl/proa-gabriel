@@ -3,27 +3,27 @@ package hotel.src
 class Hotel(
     private val hotelName: String = "Therabithia",
     private var guestName: String? = null,
-    private val rooms: List<Quarto> = listOf(
-        Quarto(1),
-        Quarto(2),
-        Quarto(3),
-        Quarto(4),
-        Quarto(5),
-        Quarto(6),
-        Quarto(7),
-        Quarto(8),
-        Quarto(9),
-        Quarto(10),
-        Quarto(11),
-        Quarto(12),
-        Quarto(13),
-        Quarto(14),
-        Quarto(15),
-        Quarto(16),
-        Quarto(17),
-        Quarto(18),
-        Quarto(19),
-        Quarto(20)
+    private val rooms: List<Room> = listOf(
+        Room(1),
+        Room(2),
+        Room(3),
+        Room(4),
+        Room(5),
+        Room(6),
+        Room(7),
+        Room(8),
+        Room(9),
+        Room(10),
+        Room(11),
+        Room(12),
+        Room(13),
+        Room(14),
+        Room(15),
+        Room(16),
+        Room(17),
+        Room(18),
+        Room(19),
+        Room(20)
     )
 ) {
     private val daily: Double = 150.0
@@ -67,6 +67,7 @@ class Hotel(
         }
     }
 
+
     private fun registerGuest() {
         var gratuidades = 0
         var meias = 0
@@ -79,12 +80,11 @@ class Hotel(
             val idade = readln()
 
             if (resposta != "PARE" || idade != "PARE") {
-                when {
+                when  {
                     idade.toInt() < 6 -> {
                         println("$resposta possui gratuidade")
                         gratuidades++
                     }
-
                     idade.toInt() > 60 -> {
                         println("$resposta paga meia")
                         meias++
@@ -97,11 +97,9 @@ class Hotel(
 
         }
 
-        println(
-            "Gratuidades: $gratuidades \n" +
-                    "Meias: $meias \n" +
-                    "Total: $total"
-        )
+        println("Gratuidades: $gratuidades \n" +
+                "Meias: $meias \n" +
+                "Total: $total")
     }
 
     private fun registerRoom() {
@@ -119,16 +117,16 @@ class Hotel(
         println("Escolha um quarto | 1-20")
         var roomNumber = readln().toInt() - 1
 
-        while (rooms[roomNumber].ocupado) {
-            println("Quarto ja ocupado, escolha outro: ")
+        while (rooms[roomNumber].occupied) {
+            println("Room ja ocupado, escolha outro: ")
             roomNumber = readln().toInt() - 1
         }
 
         println("Você confirma a reserva? Y/N")
         val response = readln()
         if (response == "Y" || response == "y") {
-            rooms[roomNumber].ocupado = true
-            println("Você reservou o quarto $roomNumber, os $days dias custarão $total reais")
+            rooms[roomNumber].occupied = true
+            println("Você reservou o quarto ${roomNumber + 1}, os $days dias custarão $total reais")
             println(rooms)
         } else {
             start()

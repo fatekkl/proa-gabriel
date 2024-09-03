@@ -3,27 +3,27 @@ package hotel.src
 class Hotel(
     private val hotelName: String = "Therabithia",
     private var guestName: String? = null,
-    private val rooms: MutableMap<Int, Boolean> = mutableMapOf(
-        1 to false,
-        2 to true,
-        3 to false,
-        4 to false,
-        5 to false,
-        6 to false,
-        7 to false,
-        8 to false,
-        9 to false,
-        10 to false,
-        11 to false,
-        12 to false,
-        13 to false,
-        14 to false,
-        15 to false,
-        16 to false,
-        17 to false,
-        18 to false,
-        19 to false,
-        20 to false
+    private val rooms: List<Quarto> = listOf(
+        Quarto(1),
+        Quarto(2),
+        Quarto(3),
+        Quarto(4),
+        Quarto(5),
+        Quarto(6),
+        Quarto(7),
+        Quarto(8),
+        Quarto(9),
+        Quarto(10),
+        Quarto(11),
+        Quarto(12),
+        Quarto(13),
+        Quarto(14),
+        Quarto(15),
+        Quarto(16),
+        Quarto(17),
+        Quarto(18),
+        Quarto(19),
+        Quarto(20)
     )
 ) {
     private val daily: Double = 150.0
@@ -79,11 +79,12 @@ class Hotel(
             val idade = readln()
 
             if (resposta != "PARE" || idade != "PARE") {
-                when  {
+                when {
                     idade.toInt() < 6 -> {
                         println("$resposta possui gratuidade")
                         gratuidades++
                     }
+
                     idade.toInt() > 60 -> {
                         println("$resposta paga meia")
                         meias++
@@ -96,9 +97,11 @@ class Hotel(
 
         }
 
-        println("Gratuidades: $gratuidades \n" +
-                "Meias: $meias \n" +
-                "Total: $total")
+        println(
+            "Gratuidades: $gratuidades \n" +
+                    "Meias: $meias \n" +
+                    "Total: $total"
+        )
     }
 
     private fun registerRoom() {
@@ -106,7 +109,7 @@ class Hotel(
 
         var days = readln().toInt()
 
-        while (days > 30 || days <= 0){
+        while (days > 30 || days <= 0) {
             println("Informe um valor vàlido: ")
             days = readln().toInt()
         }
@@ -114,17 +117,17 @@ class Hotel(
         val total = days * daily
 
         println("Escolha um quarto | 1-20")
-        var roomNumber = readln().toInt()
+        var roomNumber = readln().toInt() - 1
 
-        while(rooms[roomNumber] == true) {
+        while (rooms[roomNumber].ocupado) {
             println("Quarto ja ocupado, escolha outro: ")
-            roomNumber = readln().toInt()
+            roomNumber = readln().toInt() - 1
         }
 
         println("Você confirma a reserva? Y/N")
         val response = readln()
         if (response == "Y" || response == "y") {
-            rooms[roomNumber] = true
+            rooms[roomNumber].ocupado = true
             println("Você reservou o quarto $roomNumber, os $days dias custarão $total reais")
             println(rooms)
         } else {

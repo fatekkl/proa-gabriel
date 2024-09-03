@@ -72,7 +72,7 @@ class Hotel(
         var meias = 0
         var total = 0.0
         var checker = false
-        while (checker != true) {
+        while (!checker) {
             println("Insira o nome do hòspede: ")
             val resposta = readln()
             println("Insira a idade do hòspede, ou digite PARE")

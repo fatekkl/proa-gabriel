@@ -73,13 +73,21 @@ class Hotel(
                 "2 -> Pesquisar hospedes em especifico  \n" +
                 "3 -> Listar hospedes  \n" +
                 "4 -> Sair do menu de hospedes  \n")
+
         val selected = readln().toInt()
         when (selected) {
             1 -> registerGuest()
             2 -> searchGuest()
-//            3 -> showAllGuests()
+            3 -> showAllGuests()
 //            4 -> leave()
             else -> mistake()
+        }
+    }
+
+    private fun showAllGuests() {
+        println("Os hospedes são: ")
+        for (item in registeredGuests) {
+            println(item)
         }
     }
 

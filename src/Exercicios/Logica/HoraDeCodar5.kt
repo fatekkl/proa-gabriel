@@ -1,7 +1,6 @@
 package exercicios.logica
 
 
-
 const val green = "\u001B[32m"
 const val reset = "\u001B[0m"
 var balance: Double = 150.0

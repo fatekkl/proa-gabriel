@@ -133,7 +133,7 @@ class Hotel(
                     "Meias: $meias \n" +
                     "Total: $total \n"
         )
-        menu()
+        guestMenu()
     }
 
     private fun registerRoom() {

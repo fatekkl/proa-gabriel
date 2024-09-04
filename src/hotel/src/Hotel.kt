@@ -59,19 +59,7 @@ class Hotel(
         val selected = readln().toInt()
         when (selected) {
             1 -> registerRoom()
-            2 -> {
-                println(
-                    "Selecione sua opcão:  \n" +
-                            "1 -> Cadastrar hospede  \n" +
-                            "2 -> Pesquisar hospedes em especifico  \n" +
-                            "3 -> Listar hospedes  \n" +
-                            "4 -> Sair do menu de hospedes  \n"
-                )
-                val guestOption = readln().toInt()
-
-                guestMenu(guestOption)
-
-            }
+            2 -> guestMenu()
 //            3 -> gasStation()
 //            4 -> leave()
             else -> mistake()
@@ -79,8 +67,14 @@ class Hotel(
         }
     }
 
-    private fun guestMenu(option: Int) {
-        when (option) {
+    private fun guestMenu() {
+        println("Selecione sua opcão:  \n" +
+                "1 -> Cadastrar hospede  \n" +
+                "2 -> Pesquisar hospedes em especifico  \n" +
+                "3 -> Listar hospedes  \n" +
+                "4 -> Sair do menu de hospedes  \n")
+        val selected = readln().toInt()
+        when (selected) {
             1 -> registerGuest()
             2 -> searchGuest()
 //            3 -> showAllGuests()
@@ -98,8 +92,8 @@ class Hotel(
         } else {
             println("Hóspede $guestName não foi encontrado(a)")
         }
+        guestMenu()
     }
-
 
     private fun registerGuest() {
         var gratuidades = 0
@@ -141,7 +135,6 @@ class Hotel(
         )
         menu()
     }
-
 
     private fun registerRoom() {
         println("Informe a quantidade dias que pretende se hospedar, sendo no maximo 30 dias: ")

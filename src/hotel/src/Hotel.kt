@@ -67,6 +67,11 @@ class Hotel(
         }
     }
 
+    private fun leave() {
+        println("Retornando ao menu principal...")
+        menu()
+    }
+
     private fun guestMenu() {
         println("Selecione sua opcão:  \n" +
                 "1 -> Cadastrar hospede  \n" +
@@ -79,7 +84,7 @@ class Hotel(
             1 -> registerGuest()
             2 -> searchGuest()
             3 -> showAllGuests()
-//            4 -> leave()
+            4 -> leave()
             else -> mistake()
         }
     }

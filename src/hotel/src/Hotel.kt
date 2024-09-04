@@ -24,7 +24,8 @@ class Hotel(
         Room(18),
         Room(19),
         Room(20)
-    )
+    ),
+    private val registeredGuests: MutableList<String> = mutableListOf()
 ) {
     private val daily: Double = 150.0
     private var passReceived: String? = null
@@ -43,27 +44,59 @@ class Hotel(
                         "È um prazer ter você aqui!"
             )
 
-            println(
-                "Selecione sua opcão:  \n" +
-                        "1 -> Selecionar um quarto  \n" +
-                        "2 -> Cadastre-se como um hòspede  \n" +
-                        "3 -> Informacões sobre reabastecimento  \n" +
-                        "4 -> Sair do hotel  \n"
-            )
-
-            val selected = readln().toInt()
-            menu(selected)
+            menu()
         }
     }
 
-    private fun menu(option: Int) {
-        when (option) {
+    private fun menu() {
+        println(
+            "Selecione sua opcão:  \n" +
+                    "1 -> Selecionar um quarto  \n" +
+                    "2 -> Menu de hospedes  \n" +
+                    "3 -> Informacões sobre reabastecimento  \n" +
+                    "4 -> Sair do hotel  \n"
+        )
+        val selected = readln().toInt()
+        when (selected) {
             1 -> registerRoom()
-            2 -> registerGuest()
+            2 -> {
+                println(
+                    "Selecione sua opcão:  \n" +
+                            "1 -> Cadastrar hospede  \n" +
+                            "2 -> Pesquisar hospedes em especifico  \n" +
+                            "3 -> Listar hospedes  \n" +
+                            "4 -> Sair do menu de hospedes  \n"
+                )
+                val guestOption = readln().toInt()
+
+                guestMenu(guestOption)
+
+            }
 //            3 -> gasStation()
 //            4 -> leave()
             else -> mistake()
 
+        }
+    }
+
+    private fun guestMenu(option: Int) {
+        when (option) {
+            1 -> registerGuest()
+            2 -> searchGuest()
+//            3 -> showAllGuests()
+//            4 -> leave()
+            else -> mistake()
+        }
+    }
+
+    private fun searchGuest() {
+        println("Insira o nome do hospede que deseja procurar: \n")
+        val guestName = readln()
+
+        if (registeredGuests.contains(guestName)) {
+            println("Hóspede $guestName foi encontrado(a)")
+        } else {
+            println("Hóspede $guestName não foi encontrado(a)")
         }
     }
 
@@ -72,35 +105,43 @@ class Hotel(
         var gratuidades = 0
         var meias = 0
         var total = 0.0
-        var checker = false
-        while (!checker) {
+        while (true) {
             println("Insira o nome do hòspede: ")
             val resposta = readln()
+            if (resposta == "PARE" || resposta == "pare") {
+                break
+            }
             println("Insira a idade do hòspede, ou digite PARE")
             val idade = readln()
-
-            if (resposta != "PARE" || idade != "PARE") {
-                when  {
-                    idade.toInt() < 6 -> {
-                        println("$resposta possui gratuidade")
-                        gratuidades++
-                    }
-                    idade.toInt() > 60 -> {
-                        println("$resposta paga meia")
-                        meias++
-                        total += daily / 2
-                    }
-                }
-            } else {
-                checker = true
+            if (idade == "PARE" || idade == "pare") {
+                break
             }
 
-        }
+            when {
+                idade.toInt() < 6 -> {
+                    println("$resposta possui gratuidade")
+                    gratuidades++
+                }
 
-        println("Gratuidades: $gratuidades \n" +
-                "Meias: $meias \n" +
-                "Total: $total")
+                idade.toInt() > 60 -> {
+                    println("$resposta paga meia")
+                    meias++
+                    total += daily / 2
+                }
+
+                else -> total += daily
+            }
+
+            registeredGuests.add(resposta)
+        }
+        println(
+            "Gratuidades: $gratuidades \n" +
+                    "Meias: $meias \n" +
+                    "Total: $total \n"
+        )
+        menu()
     }
+
 
     private fun registerRoom() {
         println("Informe a quantidade dias que pretende se hospedar, sendo no maximo 30 dias: ")

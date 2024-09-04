@@ -124,6 +124,12 @@ class Hotel(
         var meias = 0
         var total = 0.0
         while (true) {
+            if (registeredGuests.size >= 15) {
+                println("Maximo de cadastros atingidos")
+                break
+            }
+
+
             println("Insira o nome do hòspede: ")
             val name = readln()
             if (name == "PARE" || name == "pare") {
@@ -152,6 +158,7 @@ class Hotel(
 
                 else -> total += daily
             }
+
 
             registeredGuests.add(newGuest)
         }

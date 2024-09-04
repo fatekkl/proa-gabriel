@@ -1,5 +1,11 @@
 package hotel.src
 
+import hotel.src.models.Guest
+import hotel.src.models.Orange
+import hotel.src.models.Purple
+import hotel.src.models.Room
+import kotlin.system.exitProcess
+
 class Hotel(
     private val hotelName: String = "Therabithia",
     private var guestName: String? = null,
@@ -25,7 +31,9 @@ class Hotel(
         Room(19),
         Room(20)
     ),
-    private val registeredGuests: MutableList<Guest> = mutableListOf()
+    private val registeredGuests: MutableList<Guest> = mutableListOf(),
+    private val orangeAuditorium: Orange = Orange(),
+    private val purpleAuditorium: Purple = Purple()
 ) {
     private val daily: Double = 150.0
     private var passReceived: String? = null
@@ -61,7 +69,7 @@ class Hotel(
             1 -> registerRoom()
             2 -> guestMenu()
 //            3 -> gasStation()
-//            4 -> leave()
+            4 -> exitProcess(400)
             else -> mistake()
 
         }
@@ -105,7 +113,7 @@ class Hotel(
         var checker = false
 
         registeredGuests.forEach {
-            if(it.name == guestName) {
+            if (it.name == guestName) {
 
                 checker = true
             }
@@ -198,6 +206,17 @@ class Hotel(
             println(rooms)
         } else {
             start()
+        }
+    }
+
+    fun bookAuditorium() {
+        println("Insira a quantidade de convidados para a reserva: ")
+
+        val visitants: Int = readln().toInt()
+
+        when {
+            visitants > 0  && visitants <= orangeAuditorium.chairs + orangeAuditorium.additional -> orangeAuditorium.reserve(visitants)
+            visitants > 220 && visitants <= purpleAuditorium.chairs + purpleAuditorium.additional -> purpleAuditorium.reserve(visitants)
         }
     }
 }

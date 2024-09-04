@@ -25,7 +25,7 @@ class Hotel(
         Room(19),
         Room(20)
     ),
-    private val registeredGuests: MutableList<String> = mutableListOf()
+    private val registeredGuests: MutableList<Guest> = mutableListOf()
 ) {
     private val daily: Double = 150.0
     private var passReceived: String? = null
@@ -73,11 +73,13 @@ class Hotel(
     }
 
     private fun guestMenu() {
-        println("Selecione sua opcão:  \n" +
-                "1 -> Cadastrar hospede  \n" +
-                "2 -> Pesquisar hospedes em especifico  \n" +
-                "3 -> Listar hospedes  \n" +
-                "4 -> Sair do menu de hospedes  \n")
+        println(
+            "Selecione sua opcão:  \n" +
+                    "1 -> Cadastrar hospede  \n" +
+                    "2 -> Pesquisar hospedes em especifico  \n" +
+                    "3 -> Listar hospedes  \n" +
+                    "4 -> Sair do menu de hospedes  \n"
+        )
 
         val selected = readln().toInt()
         when (selected) {
@@ -92,19 +94,28 @@ class Hotel(
     private fun showAllGuests() {
         println("Os hospedes são: ")
         for (item in registeredGuests) {
-            println(item)
+            println(item.name)
         }
+        guestMenu()
     }
 
     private fun searchGuest() {
         println("Insira o nome do hospede que deseja procurar: \n")
         val guestName = readln()
+        var checker = false
 
-        if (registeredGuests.contains(guestName)) {
-            println("Hóspede $guestName foi encontrado(a)")
-        } else {
-            println("Hóspede $guestName não foi encontrado(a)")
+        registeredGuests.forEach {
+            if(it.name == guestName) {
+
+                checker = true
+            }
         }
+        if (checker) {
+            println("Hospede $guestName foi encontrado!")
+        } else {
+            println("Hospede $guestName não foi encontrado!")
+        }
+
         guestMenu()
     }
 
@@ -114,24 +125,27 @@ class Hotel(
         var total = 0.0
         while (true) {
             println("Insira o nome do hòspede: ")
-            val resposta = readln()
-            if (resposta == "PARE" || resposta == "pare") {
+            val name = readln()
+            if (name == "PARE" || name == "pare") {
                 break
             }
             println("Insira a idade do hòspede, ou digite PARE")
-            val idade = readln()
-            if (idade == "PARE" || idade == "pare") {
+            val age = readln()
+            if (age == "PARE" || age == "pare") {
                 break
             }
 
+            val newGuest = Guest(name, age.toInt())
+
+
             when {
-                idade.toInt() < 6 -> {
-                    println("$resposta possui gratuidade")
+                age.toInt() < 6 -> {
+                    println("$name possui gratuidade")
                     gratuidades++
                 }
 
-                idade.toInt() > 60 -> {
-                    println("$resposta paga meia")
+                age.toInt() > 60 -> {
+                    println("$name paga meia")
                     meias++
                     total += daily / 2
                 }
@@ -139,7 +153,7 @@ class Hotel(
                 else -> total += daily
             }
 
-            registeredGuests.add(resposta)
+            registeredGuests.add(newGuest)
         }
         println(
             "Gratuidades: $gratuidades \n" +

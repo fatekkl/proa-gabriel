@@ -46,7 +46,7 @@ class Hotel(
         println("Insira a senha: ")
         passReceived = readln()
 
-        if (verifyPass(passReceived)) {
+        if (   verifyPass(passReceived) ) {
             println(
                 "Bem vindo ao Hotel $hotelName, $guestName." +
                         "È um prazer ter você aqui!"
@@ -203,7 +203,8 @@ class Hotel(
         if (response == "Y" || response == "y") {
             rooms[roomNumber].occupied = true
             println("Você reservou o quarto ${roomNumber + 1}, os $days dias custarão $total reais")
-            println(rooms)
+
+            println(rooms[roomNumber])
         } else {
             start()
         }

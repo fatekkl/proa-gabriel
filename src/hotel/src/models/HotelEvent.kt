@@ -9,5 +9,4 @@ class HotelEvent(
     var guests: Int = 0,
     var waiterValue: Double = 0.0,
     var buffetValue: Double = 0.0
-) {
-}
+)

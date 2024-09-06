@@ -43,7 +43,7 @@ class Hotel(
         println("Insira a senha: ")
         passReceived = readln()
 
-        if (   verifyPass(passReceived) ) {
+        if (verifyPass(passReceived)) {
             println(
                 "Bem vindo ao Hotel $hotelName, $guestName." +
                         "È um prazer ter você aqui!"
@@ -65,10 +65,40 @@ class Hotel(
         when (selected) {
             1 -> registerRoom()
             2 -> guestMenu()
-//            3 -> gasStation()
+            3 -> gasStationCheck()
             4 -> exitProcess(400)
             else -> mistake()
 
+        }
+    }
+
+    private fun gasStationCheck() {
+        println("Qual valor do litro do alcool no posto Wayne Oil? \n")
+        val wayneAlcohol = readln().toInt() * 42
+
+        println("Qual o valor do litro da gasolina no posto Wayne Oil? \n")
+        val wayneGasoline = readln().toInt() * 42
+
+        println("Qual o valor do litro do alcool no posto Stark Petrol? \n")
+        val starkAlcohol = readln().toInt() * 42
+
+        println("Qual o valor do litro da gasolina no posto Stark Petrol?")
+        val starkGasoline = readln().toInt() * 42
+
+        val cheapGasoline = getCheap(wayneGasoline,starkGasoline)
+
+        val cheapAlcohol = getCheap(starkAlcohol, wayneAlcohol)
+
+        if (cheapAlcohol < cheapGasoline * 0.7){
+            when (cheapAlcohol) {
+                starkAlcohol -> println("è mais barato abastecer com alcool no posto Stark")
+                wayneAlcohol -> println("è mais barato abastecer com alcool no posto Wayne")
+            }
+        } else {
+            when(cheapGasoline) {
+                starkGasoline -> println("è mais barato abastecer com gasolina no posto Stark")
+                wayneGasoline -> println("è mais barato abastecer com gasolina no posto Wayne")
+            }
         }
     }
 
@@ -200,11 +230,10 @@ class Hotel(
         if (response == "Y" || response == "y") {
             rooms[roomNumber].occupied = true
             println("Você reservou o quarto ${roomNumber + 1}, os $days dias custarão $total reais")
-
-            println(rooms[roomNumber])
         } else {
             start()
         }
+        menu()
     }
 
     fun bookAuditorium() {
@@ -213,8 +242,13 @@ class Hotel(
         val visitants: Int = readln().toInt()
 
         when {
-            visitants > 0  && visitants <= orangeAuditorium.chairs + orangeAuditorium.additional -> orangeAuditorium.reserve(visitants)
-            visitants > 220 && visitants <= purpleAuditorium.chairs + purpleAuditorium.additional -> purpleAuditorium.reserve(visitants)
+            visitants > 0 && visitants <= orangeAuditorium.chairs + orangeAuditorium.additional -> orangeAuditorium.reserve(
+                visitants
+            )
+
+            visitants > 220 && visitants <= purpleAuditorium.chairs + purpleAuditorium.additional -> purpleAuditorium.reserve(
+                visitants
+            )
         }
     }
 }

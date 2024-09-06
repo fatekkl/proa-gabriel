@@ -5,5 +5,5 @@ fun main() {
 
 
 
-    hotel.bookAuditorium()
+    hotel.start()
 }

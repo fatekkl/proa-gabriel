@@ -101,8 +101,9 @@ abstract class Auditorium(
         println("Gostaria de efetuar a reserva completa? S/N")
         val response = readln().lowercase()
 
-        if (response == "s") {
-            println("Reserva efetuada com sucesso")
+        when (response) {
+            "s" -> println("Reserva efetuada")
+            "n" -> println("Reserva não efetuada")
         }
     }
 }

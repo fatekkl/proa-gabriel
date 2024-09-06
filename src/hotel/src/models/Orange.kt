@@ -11,6 +11,7 @@ class Orange : Auditorium(150, 70) {
         }
         schedule()
         waiters(visitants)
+        buffet(visitants)
     }
 
 

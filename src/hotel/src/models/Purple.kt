@@ -6,6 +6,7 @@ class Purple: Auditorium(350, 0) {
         println("O auditorio colorado foi reservado, nesse auditorio não são necessarias cadeiras adicionais")
         schedule()
         waiters(visitants)
+        buffet(visitants)
     }
 
 

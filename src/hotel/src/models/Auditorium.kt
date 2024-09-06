@@ -26,7 +26,7 @@ abstract class Auditorium(
 
         val response = readln().lowercase()
 
-        if (week.indexOf(response) <= 3){
+        if (week.indexOf(response) <= 3) {
             println("Qual a hora do seu evento?")
             val hour = readln().toInt()
 
@@ -42,7 +42,7 @@ abstract class Auditorium(
     }
 
     protected fun waiters(visitants: Int) {
-        val waiters = ceil( (visitants / 12).toDouble() ).toInt()
+        val waiters = ceil((visitants / 12).toDouble()).toInt()
         println("Serão necessarios $waiters garcons \n")
 
         println("Qual a duracão do evento em horas? \n")
@@ -53,7 +53,21 @@ abstract class Auditorium(
         println("O Custo dos garcons sera $waitersPrice")
     }
 
-    protected fun buffet() {
+    protected fun buffet(visitants: Int) {
+        val coffe = visitants * 0.2
+        val water = visitants * 0.5
+        val savory = visitants * 7
+
+        println(
+            "o evento precisara de $coffe litros de cafe para $visitants convidados \n" +
+                    "$water litros de agua para $visitants convidados \n" +
+                    "$savory salgados para $visitants convidados \n"
+        )
+
+        println("Os precos serão: \n" +
+                "Cafe: ${ceil(coffe * 0.80)} reais \n" +
+                "Agua: ${ceil(water * 0.40)} reais \n" +
+                "Salgados: ${ceil(savory * 0.34)} reais")
 
     }
 }

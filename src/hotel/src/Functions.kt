@@ -8,6 +8,14 @@ fun verifyPass(passReceived: String?): Boolean {
     }
 }
 
-fun mistake() {
+fun getCheap(a: Int, b: Int): Int {
+    return if (a < b){
+        a
+    } else {
+        b
+    }
+}
 
+fun mistake() {
+    println("Erro desconhecido")
 }

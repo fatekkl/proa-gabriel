@@ -1,9 +1,6 @@
 package hotel.src
 
-import hotel.src.models.Guest
-import hotel.src.models.Orange
-import hotel.src.models.Purple
-import hotel.src.models.Room
+import hotel.src.models.*
 import kotlin.system.exitProcess
 
 class Hotel(

@@ -18,13 +18,40 @@ fun main() {
     )
     val option = readln().toInt()
 
-    when(option) {
+    when (option) {
         1 -> register()
-//        2 -> search()
-//        3 -> showOrdered()
-//        4 -> show()
+        2 -> search()
+        3 -> showOrdered()
+        4 -> show()
         5 -> exitProcess(400)
     }
+}
+
+fun showOrdered() {
+    var ordenedRecords = records.sortedBy { it.name }
+
+
+    println("$ordenedRecords \n")
+    main()
+}
+
+fun show() {
+    println(records)
+    main()
+}
+
+fun search() {
+    println("Você esta pesquisando por: ")
+    val searchingFor = readln()
+
+    println("Pesquisando nos registros...")
+
+    records.forEach {
+        if (it.name == searchingFor) {
+            println("$searchingFor foi encontrado!")
+        }
+    }
+    main()
 }
 
 fun register() {
@@ -39,19 +66,19 @@ fun register() {
     println("Qual seu numero de telefone? ")
     var phone = readln()
 
-    while(!validatePhone(phone)){
+    while (!validatePhone(phone)) {
         println("Insira um telefone valido!")
         phone = readln()
     }
 
-    val register = Person(name,address,phone)
+    val register = Person(name, address, phone)
 
     records.add(register)
-    println(records)
+    main()
 }
 
 fun validatePhone(phone: String): Boolean {
-    val regex = Regex("^\\\\d{11}\\\$")
+    val regex = Regex("^\\d{11}\$")
     return regex.matches(phone)
 }
 

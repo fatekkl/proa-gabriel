@@ -1,2 +1,2 @@
-package Exercicios.Logica.HoraDeCodar6
+package exercicios.logica.horadecodar6
 

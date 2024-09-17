@@ -45,8 +45,8 @@ class Hotel(
 
         if (verifyPass(passReceived)) {
             println(
-                "Bem vindo ao Hotel $hotelName, $guestName." +
-                        "È um prazer ter você aqui!"
+                "Bem vindo ao Hotel $hotelName, $guestName. " +
+                        "É um prazer ter você aqui!"
             )
 
             menu()
@@ -206,12 +206,12 @@ class Hotel(
     }
 
     private fun registerRoom() {
-        println("Informe a quantidade dias que pretende se hospedar, sendo no maximo 30 dias: ")
+        println("Informe a quantidade de dias que pretende se hospedar, sendo no máximo 30 dias: ")
 
         var days = readln().toInt()
 
         while (days > 30 || days <= 0) {
-            println("Informe um valor vàlido: ")
+            println("Informe um valor válido: ")
             days = readln().toInt()
         }
 
@@ -221,7 +221,7 @@ class Hotel(
         var roomNumber = readln().toInt() - 1
 
         while (rooms[roomNumber].occupied) {
-            println("Room ja ocupado, escolha outro: ")
+            println("Quarto já ocupado, escolha outro: ")
             roomNumber = readln().toInt() - 1
         }
 

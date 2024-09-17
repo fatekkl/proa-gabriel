@@ -91,13 +91,13 @@ class Hotel(
 
         if (cheapAlcohol < cheapGasoline * 0.7){
             when (cheapAlcohol) {
-                starkAlcohol -> println("è mais barato abastecer com alcool no posto Stark")
-                wayneAlcohol -> println("è mais barato abastecer com alcool no posto Wayne")
+                starkAlcohol -> println("é mais barato abastecer com álcool no posto Stark")
+                wayneAlcohol -> println("é mais barato abastecer com álcool no posto Wayne")
             }
         } else {
             when(cheapGasoline) {
-                starkGasoline -> println("è mais barato abastecer com gasolina no posto Stark")
-                wayneGasoline -> println("è mais barato abastecer com gasolina no posto Wayne")
+                starkGasoline -> println("é mais barato abastecer com gasolina no posto Stark")
+                wayneGasoline -> println("é mais barato abastecer com gasolina no posto Wayne")
             }
         }
     }
@@ -160,19 +160,19 @@ class Hotel(
         var total = 0.0
         while (true) {
             if (registeredGuests.size >= 15) {
-                println("Maximo de cadastros atingidos")
+                println("Máximo de cadastros atingidos")
                 break
             }
 
 
             println("Insira o nome do hòspede: ")
-            val name = readln()
-            if (name == "PARE" || name == "pare") {
+            val name = readln().lowercase()
+            if (name == "pare") {
                 break
             }
-            println("Insira a idade do hòspede, ou digite PARE")
-            val age = readln()
-            if (age == "PARE" || age == "pare") {
+            println("Insira a idade do háspede, ou digite PARE")
+            val age = readln().lowercase()
+            if (age == "pare") {
                 break
             }
 

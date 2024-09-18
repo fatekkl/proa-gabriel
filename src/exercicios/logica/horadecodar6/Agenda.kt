@@ -28,10 +28,10 @@ fun main() {
 }
 
 fun showOrdered() {
-    var ordenedRecords = records.sortedBy { it.name }
+    val orderedRecords = records.sortedBy { it.name }
 
 
-    println("$ordenedRecords \n")
+    println("$orderedRecords \n")
     main()
 }
 

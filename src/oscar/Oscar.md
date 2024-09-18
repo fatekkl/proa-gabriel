@@ -53,8 +53,22 @@ db.registros.find( \
 
 ## Na campo "Vencedor", altere todos os valores com "Sim" para 1 e todos os valores "Não" para 0.
 
-
-db.registros.updateMany(
+db.registros.updateMany( \
 {vencedor: "true"}, \
 {$set: { vencedor: 1} } \
+)
+
+## Em qual edição do Oscar "Crash" concorreu ao Oscar?
+
+2006
+
+db.registros.find({nome_do_filme: "Crash"}, {ano_cerimonia: 1, _id: 0}).limit(1)
+
+## Bom... dê um Oscar para um filme que merece muito, mas não ganhou.
+
+Agora Whiplash tambem ganhou de escrita xD
+
+db.registros.updateOne( \
+{nome_do_filme: /Whiplash/, categoria: /WRITING/}, \
+{$set: {vencedor: 1}}
 )

@@ -91,5 +91,55 @@ db.registros.insertMany([
 "nome_do_indicado": "Martin Scorsese", \
 "nome_do_filme": "Ilha do Medo", \
 "vencedor": 1 \
-},
+}, {
+"id_registro": 10891, \
+"ano_filmagem": 1996, \
+"ano_lancamento": 1997, \
+"diretor": "Hayao Miyazaki", \
+"nome_do_filme": "Princesa Mononoke", \
+"vencedor": 1, \
+}, {
+"_id": {
+"$oid": "66ead3d062882401065c1f19"
+},\
+"id_registro": 9652, \
+"ano_filmagem": 1987, \
+"ano_lancamento": 1988, \
+"diretor": "Isao Takahata", \
+"nome_do_filme": "Túmulo dos Vagalumes", \
+"vencedor": 0, \
+}
 ])
+
+## Pensando no ano em que você nasceu: Qual foi o Oscar de melhor filme, Melhor Atriz e Melhor Diretor?
+
+Eu nasci em 2006 e os filmes são:
+
+Best Picture: Crash \
+Best Actress: Reese Witherspoon \
+Best Director: Ang Lee \
+
+### BEST PICTURE
+
+db.registros.find({ \
+ano_cerimonia: 2006, \
+vencedor: 1, \
+categoria: /BEST PICTURE/i \
+}, {nome_do_filme: 1})
+
+
+### BEST ACTRESS
+
+db.registros.find({ \
+ano_cerimonia: 2006, \
+vencedor: 1, \
+categoria: "ACTRESS IN A LEADING ROLE" \
+}, {nome_do_indicado: 1})
+
+### BEST DIRECTOR
+
+db.registros.find({ \
+ano_cerimonia: 2006, \
+vencedor: 1, \
+categoria: /DIRECTING/i \
+}, {nome_do_indicado: 1})

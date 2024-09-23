@@ -6,6 +6,8 @@ alimentada da mesma forma que a minha.
 
 ## Quantas vezes Natalie Portman foi indicada ao oscar?
 
+3
+
 db.registros.countDocuments( {
 nome_do_indicado: { $regex: "Natalie Portman", $options: "i"}
 })

@@ -39,10 +39,14 @@ db.funcionarios.countDocuments({departamento: ObjectId("85992103f9b3e0b3b3c1fe74
 
 * Qual a média salarial do departamento de tecnologia?
 
-14861
+4560
 
-db.funcionarios.aggregate([
-  {
+db.funcionarios.aggregate([{
+$match: {
+	departamento: ObjectId("85992103f9b3e0b3b3c1fe74")
+}
+}
+  ,{
     $group: {
       _id: null,
       totalSalarios: { $sum: "$salario" },
@@ -60,8 +64,46 @@ db.funcionarios.aggregate([
 
 * Quanto o departamento de Vendas gasta em salários?
 
+95100
+
+db.funcionarios.aggregate([
+  {
+    $match: {
+      departamento: ObjectId("85992103f9b3e0b3b3c1fe71")
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      totalSalarios: { $sum: "$salario" }
+    }
+  }
+])
+
+
 * Um novo departamento foi criado. O departamento de Inovações. 
 Ele será locado no Brasil. Por favor, adicione-o no banco de dados da empresa colocando quaisquer informações que você achar relevantes.
+
+db.funcionarios.aggregate([{
+$match: {
+	departamento: ObjectId("85992103f9b3e0b3b3c1fe74")
+}
+}
+  ,{
+    $group: {
+      _id: null,
+      totalSalarios: { $sum: "$salario" },
+      totalFuncionarios: { $sum: 1 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      mediaSalarios: { $divide: ["$totalSalarios", "$totalFuncionarios"] }
+    }
+  }
+])
+
 
 * O departamento de Inovações está sem funcionários. Inclua alguns colegas de turma nesse departamento.  
 

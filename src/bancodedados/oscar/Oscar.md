@@ -14,6 +14,8 @@ nome_do_indicado: { $regex: "Natalie Portman", $options: "i"}
 
 ## Quantos Oscars Natalie Portman ganhou?
 
+1
+
 db.registros.countDocuments( { \
 nome_do_indicado: { $regex: "Natalie Portman", $options: "i" }, \
 vencedor: "true" \

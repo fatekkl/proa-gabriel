@@ -107,7 +107,39 @@ $match: {
 
 * O departamento de Inovações está sem funcionários. Inclua alguns colegas de turma nesse departamento.  
 
+db.funcionarios.insertMany([
+{
+nome: "Victor de Curtis",
+telefone: "11111111111",
+email: "decurtis@moedas.com",
+dataAdmissao: "1996-02-17",
+cargo: "Desenvolvedor FullStack",
+salario: 1000,
+departamento: ObjectId("66f4292601b9c2ddced97dc3")
+},{
+nome: "Hudson Souza",
+telefone: "11222222222",
+email: "hudson@dev.com",
+dataAdmissao: "1996-02-17",
+cargo: "Desenvolvedor Frontend",
+salario: 11000,
+departamento: ObjectId("66f4292601b9c2ddced97dc3")
+},{
+nome: "Murilo Oliveira",
+telefone: "11333333333",
+email: "113333333",
+dataAdmissao: "1996-02-17",
+cargo: "Desenvolvedor FullStack",
+salario: 10000,
+departamento: ObjectId("66f4292601b9c2ddced97dc3")
+}
+])
+
 * Quantos funcionarios a empresa Momento tem agora?
+
+27
+
+db.funcionarios.countDocuments()
 
 * Quantos funcionários da empresa Momento possuem conjuges?
 

@@ -8,11 +8,12 @@ Vamos fazer algumas perguntas para brincar de análise exploratória de dados co
 
 10
 
-db.funcionarios.countDocuments({departamento: ObjectId("85992103f9b3e0b3b3c1fe71")})
-
+```db.funcionarios.countDocuments({departamento: ObjectId("85992103f9b3e0b3b3c1fe71")})
+```
 
 * Inclua suas próprias informações no departamento de Tecnologia da empresa.
 
+```js
 db.funcionarios.insertOne(
 {
     _id: ObjectId("5f8b3f3f9b3e0b3b3c1e3e93"),
@@ -24,13 +25,14 @@ db.funcionarios.insertOne(
     salario: 71000,
     departamento: ObjectId("5f8b3f3f9b3e0b3b3c1e3e3e"),
 })
-
+```
 * Agora diga, quantos funcionários temos ao total na empresa?
 
 24
 
+```js
 db.funcionarios.countDocuments()
-
+```
 * E quanto ao Departamento de Tecnologia?
 
 5
@@ -41,6 +43,7 @@ db.funcionarios.countDocuments({departamento: ObjectId("85992103f9b3e0b3b3c1fe74
 
 4560
 
+```js
 db.funcionarios.aggregate([{
 $match: {
 	departamento: ObjectId("85992103f9b3e0b3b3c1fe74")
@@ -60,12 +63,14 @@ $match: {
     }
   }
 ])
+```
 
 
 * Quanto o departamento de Vendas gasta em salários?
 
 95100
 
+```js
 db.funcionarios.aggregate([
   {
     $match: {
@@ -79,11 +84,13 @@ db.funcionarios.aggregate([
     }
   }
 ])
+```
 
 
 * Um novo departamento foi criado. O departamento de Inovações. 
 Ele será locado no Brasil. Por favor, adicione-o no banco de dados da empresa colocando quaisquer informações que você achar relevantes.
 
+```js
 db.funcionarios.aggregate([{
 $match: {
 	departamento: ObjectId("85992103f9b3e0b3b3c1fe74")
@@ -103,10 +110,12 @@ $match: {
     }
   }
 ])
+```
 
 
 * O departamento de Inovações está sem funcionários. Inclua alguns colegas de turma nesse departamento.  
 
+```js
 db.funcionarios.insertMany([
 {
 nome: "Victor de Curtis",
@@ -134,14 +143,21 @@ salario: 10000,
 departamento: ObjectId("66f4292601b9c2ddced97dc3")
 }
 ])
+```
 
-* Quantos funcionarios a empresa Momento tem agora?
+*Quantos funcionarios a empresa Momento tem agora?
 
 27
 
+```js
 db.funcionarios.countDocuments()
+```
 
 * Quantos funcionários da empresa Momento possuem conjuges?
+
+```js
+db.funcionarios.countDocuments({ "dependentes.conjuge": { $exists: true }})
+```
 
 * Qual a média salarial dos funcionários da empresa Momento, excluindo-se o CEO?
 

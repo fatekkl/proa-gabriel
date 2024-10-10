@@ -155,13 +155,35 @@ db.funcionarios.countDocuments()
 
 * Quantos funcionários da empresa Momento possuem conjuges?
 
+7
+
 ```js
 db.funcionarios.countDocuments({ "dependentes.conjuge": { $exists: true }})
 ```
 
 * Qual a média salarial dos funcionários da empresa Momento, excluindo-se o CEO?
 
-* Qual a média salarial do departamento de tecnologia? 
+```js
+db.funcionarios.aggregate([{
+$match: {
+		cargo: {$ne: "CEO"}
+}
+}
+  ,{
+    $group: {
+      _id: null,
+      totalSalarios: { $sum: "$salario" },
+      totalFuncionarios: { $sum: 1 }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      mediaSalarios: { $divide: ["$totalSalarios", "$totalFuncionarios"] }
+    }
+  }
+])
+```
 
 * Qual o departamento com a maior média salarial?
 

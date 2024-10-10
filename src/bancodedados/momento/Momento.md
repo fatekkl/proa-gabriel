@@ -8,7 +8,8 @@ Vamos fazer algumas perguntas para brincar de análise exploratória de dados co
 
 10
 
-```db.funcionarios.countDocuments({departamento: ObjectId("85992103f9b3e0b3b3c1fe71")})
+```js
+db.funcionarios.countDocuments({departamento: ObjectId("85992103f9b3e0b3b3c1fe71")})
 ```
 
 * Inclua suas próprias informações no departamento de Tecnologia da empresa.

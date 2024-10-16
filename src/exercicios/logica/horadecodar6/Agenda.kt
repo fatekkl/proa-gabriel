@@ -1,4 +1,4 @@
-package exercicios.logica.horadecodar6
+package exercicios.logica.HoraDeCodar6
 
 import kotlin.system.exitProcess
 

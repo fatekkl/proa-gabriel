@@ -1,4 +1,4 @@
-package exercicios.logica.HoraDeCodar7
+package exercicios.logica.HoraDeCodar7.Agenda
 
 val registers = mutableListOf<Record>()
 

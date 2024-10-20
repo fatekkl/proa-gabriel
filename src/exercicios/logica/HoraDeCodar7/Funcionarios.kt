@@ -15,3 +15,35 @@ fun register (name: String, salary: Int) {
 
     employees.add(employer)
 }
+
+fun searchByRegistration(n: Int) {
+    employees.forEach {
+        when(it.registration){
+            n -> println("O funcionario ${it.name} foi encontrado!!")
+        }
+    }
+}
+
+fun searchMinorSalary() {
+    val pobres = mutableListOf<Employer>()
+
+    employees.forEach {
+        when {
+            it.salary < 1000 -> pobres.add(it)
+        }
+    }
+
+    println(pobres)
+}
+
+fun searchEqualSalary() {
+    val CLT = mutableListOf<Employer>()
+
+    employees.forEach {
+        when {
+            it.salary == 1000 -> CLT.add(it)
+        }
+    }
+
+    println(CLT)
+}

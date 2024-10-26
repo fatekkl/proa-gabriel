@@ -4,7 +4,6 @@ Abaixo estão todos os scripts usados para popular o banco de dados:
 
 ## Pacientes
 ```js
-// FINALIZADO!! PACIENTES E CONSULTAS SINCRONIZADOS
 db.pacientes.insertMany([ {
     "_id": ObjectId("671939c25a37072279c0b591"),
     "nome": "Thiago Nascimento",
@@ -23,7 +22,7 @@ db.pacientes.insertMany([ {
       "CPF": "22334455678",
       "CRM": "19032098786"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325322")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325297")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b592"),
@@ -43,7 +42,7 @@ db.pacientes.insertMany([ {
       "CPF": "33445566789",
       "CRM": "19032098787"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325323")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325297")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b593"),
@@ -63,7 +62,7 @@ db.pacientes.insertMany([ {
       "CPF": "44556677890",
       "CRM": "19032098788"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325324")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325297")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b594"),
@@ -83,7 +82,7 @@ db.pacientes.insertMany([ {
       "CPF": "55667788901",
       "CRM": "19032098789"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325325")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325297")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b595"),
@@ -103,7 +102,7 @@ db.pacientes.insertMany([ {
       "CPF": "66778899012",
       "CRM": "19032098790"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325326")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325297")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b596"),
@@ -123,7 +122,7 @@ db.pacientes.insertMany([ {
       "CPF": "77889900123",
       "CRM": "19032098791"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325327")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325298")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b597"),
@@ -143,7 +142,7 @@ db.pacientes.insertMany([ {
       "CPF": "88990011234",
       "CRM": "19032098792"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325328")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325298")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b598"),
@@ -163,7 +162,7 @@ db.pacientes.insertMany([ {
       "CPF": "99001122345",
       "CRM": "19032098793"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325329")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325298")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b599"),
@@ -183,7 +182,7 @@ db.pacientes.insertMany([ {
       "CPF": "00112233456",
       "CRM": "19032098794"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325330")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325298")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b600"),
@@ -203,7 +202,7 @@ db.pacientes.insertMany([ {
       "CPF": "11223344567",
       "CRM": "19032098795"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325331")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325298")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b601"),
@@ -223,7 +222,7 @@ db.pacientes.insertMany([ {
       "CPF": "22334455678",
       "CRM": "19032098796"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325332")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325299")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b602"),
@@ -243,7 +242,7 @@ db.pacientes.insertMany([ {
       "CPF": "33445566789",
       "CRM": "19032098797"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325333")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325299")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b603"),
@@ -263,7 +262,7 @@ db.pacientes.insertMany([ {
       "CPF": "44556677890",
       "CRM": "19032098798"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325334")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325299")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b604"),
@@ -283,7 +282,7 @@ db.pacientes.insertMany([ {
       "CPF": "55667788901",
       "CRM": "19032098799"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325335")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325299")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b605"),
@@ -303,7 +302,7 @@ db.pacientes.insertMany([ {
       "CPF": "66778899012",
       "CRM": "19032098800"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325336")
+    "convenio_id": ObjectId("67193973b62fc3ebf5325299")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b606"),
@@ -323,7 +322,7 @@ db.pacientes.insertMany([ {
       "CPF": "77889900123",
       "CRM": "19032098801"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325337")
+    "convenio_id": ObjectId("67193973b62fc3ebf53252a0")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b607"),
@@ -343,7 +342,7 @@ db.pacientes.insertMany([ {
       "CPF": "88990011234",
       "CRM": "19032098802"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325338")
+    "convenio_id": ObjectId("67193973b62fc3ebf53252a0")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b608"),
@@ -363,7 +362,7 @@ db.pacientes.insertMany([ {
       "CPF": "99001122345",
       "CRM": "19032098803"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325339")
+    "convenio_id": ObjectId("67193973b62fc3ebf53252a0")
   },  {
     "_id": ObjectId("671939c25a37072279c0b610"),
     "nome": "Rodrigo Mendonça",
@@ -382,7 +381,7 @@ db.pacientes.insertMany([ {
       "CPF": "12123434567",
       "CRM": "19032098804"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325340")
+    "convenio_id": ObjectId("67193973b62fc3ebf53252a0")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b611"),
@@ -402,7 +401,7 @@ db.pacientes.insertMany([ {
       "CPF": "23234545678",
       "CRM": "19032098805"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325341")
+    "convenio_id": ObjectId("67193973b62fc3ebf53252a0")
   },
   {
     "_id": ObjectId("671939c25a37072279c0b612"),
@@ -422,7 +421,7 @@ db.pacientes.insertMany([ {
       "CPF": "34345656789",
       "CRM": "19032098806"
     },
-    "convenio_id": ObjectId("67193973b62fc3ebf5325342")
+    "convenio_id": ObjectId("67193973b62fc3ebf53252a0")
   }])
 ```
 ## Médicos
@@ -829,7 +828,6 @@ db.convenios.insertMany([
 ```
 ## Consultas
 ```js
-// PACIENTES FUNCIONANDO!!
 db.consultas.insertMany([
   {
     "_id": ObjectId("671939eb9ef617ec11a50602"),
@@ -846,7 +844,7 @@ db.consultas.insertMany([
   {
     "_id": ObjectId("671939eb9ef617ec11a50604"),
     "data": ISODate("2023-03-12T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
     "paciente_id": ObjectId("671939c25a37072279c0b593")  // João Santos
   },
   {
@@ -858,25 +856,25 @@ db.consultas.insertMany([
   {
     "_id": ObjectId("671939eb9ef617ec11a50606"),
     "data": ISODate("2023-05-08T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dd"),
     "paciente_id": ObjectId("671939c25a37072279c0b595")  // Carlos Ferreira
   },
   {
     "_id": ObjectId("671939eb9ef617ec11a50607"),
     "data": ISODate("2023-06-15T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dd"),
     "paciente_id": ObjectId("671939c25a37072279c0b596")  // Patricia Lima
   },
   {
     "_id": ObjectId("671939eb9ef617ec11a50608"),
     "data": ISODate("2023-07-23T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dd"),
     "paciente_id": ObjectId("671939c25a37072279c0b597")  // Ricardo Souza
   },
   {
     "_id": ObjectId("671939eb9ef617ec11a50609"),
     "data": ISODate("2023-08-30T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dd"),
     "paciente_id": ObjectId("671939c25a37072279c0b598")  // Fernanda Costa
   },
   {
@@ -888,7 +886,7 @@ db.consultas.insertMany([
   {
     "_id": ObjectId("671939eb9ef617ec11a5060b"),
     "data": ISODate("2023-10-05T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
     "paciente_id": ObjectId("671939c25a37072279c0b600")  // Beatriz Almeida
   },
   {
@@ -900,13 +898,13 @@ db.consultas.insertMany([
   {
     "_id": ObjectId("671939eb9ef617ec11a5060d"),
     "data": ISODate("2023-11-12T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
     "paciente_id": ObjectId("671939c25a37072279c0b602")  // Mariana Costa
   },
   {
     "_id": ObjectId("671939eb9ef617ec11a5060e"),
     "data": ISODate("2023-11-30T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650df"),
     "paciente_id": ObjectId("671939c25a37072279c0b603")  // Felipe Rodrigues
   },
   {
@@ -918,13 +916,13 @@ db.consultas.insertMany([
   {
     "_id": ObjectId("671939eb9ef617ec11a50610"),
     "data": ISODate("2023-12-30T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650e2"),
     "paciente_id": ObjectId("671939c25a37072279c0b605")  // Rafael Oliveira
   },
   {
     "_id": ObjectId("671939eb9ef617ec11a50611"),
     "data": ISODate("2023-12-15T03:00:00.000Z"),
-    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650e2"),
     "paciente_id": ObjectId("671939c25a37072279c0b606")  // Julia Ferreira
   }
 ]

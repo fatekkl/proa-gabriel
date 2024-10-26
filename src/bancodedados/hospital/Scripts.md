@@ -1,1767 +1,932 @@
-# Inclua ao menos dez médicos de diferentes especialidades
+# Scripts
 
-```js 
-db.medicos.insertMany([
-    {
-        "nome": "Dr. João Pereira",
-        "data_nascimento": ISODate("1979-07-15"),
-        "endereco": {
-            "logradouro": "Avenida Paulista",
-            "numero": "1500",
-            "bairro": "Bela Vista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01310300"
-        },
-        "especialidades": [
-            "Cardiologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-934567890",
-            "email": "joao@hospital.com"
-        },
-        "documentos": {
-            "CPF": "34567890123",
-            "RG": "6612345678",
-            "CRM": "SP345678"
-        },
-        "em_atividade": false
-    },
-    {
-        "nome": "Dra. Marina Silva",
-        "data_nascimento": ISODate("1988-04-22"),
-        "endereco": {
-            "logradouro": "Rua Augusta",
-            "numero": "250",
-            "bairro": "Consolação",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01305000"
-        },
-        "especialidades": [
-            "Pediatria"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-912345678",
-            "email": "marina@hospital.com"
-        },
-        "documentos": {
-            "CPF": "45678901234",
-            "RG": "7723456789",
-            "CRM": "SP456789"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dr. Carlos Menezes",
-        "data_nascimento": ISODate("1980-12-03"),
-        "endereco": {
-            "logradouro": "Rua Oscar Freire",
-            "numero": "789",
-            "bairro": "Jardins",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01426000"
-        },
-        "especialidades": [
-            "Ortopedia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-913456789",
-            "email": "carlos@hospital.com"
-        },
-        "documentos": {
-            "CPF": "56789012345",
-            "RG": "8834567890",
-            "CRM": "SP567890"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dra. Patrícia Gomes",
-        "data_nascimento": ISODate("1990-09-17"),
-        "endereco": {
-            "logradouro": "Rua dos Trilhos",
-            "numero": "432",
-            "bairro": "Mooca",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "03168000"
-        },
-        "especialidades": [
-            "Ginecologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-914567890",
-            "email": "patricia@hospital.com"
-        },
-        "documentos": {
-            "CPF": "67890123456",
-            "RG": "9945678901",
-            "CRM": "SP678901"
-        },
-        "em_atividade": false
-    },
-    {
-        "nome": "Dr. Eduardo Santos",
-        "data_nascimento": ISODate("1975-05-28"),
-        "endereco": {
-            "logradouro": "Rua Vergueiro",
-            "numero": "150",
-            "bairro": "Vila Mariana",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "04101000"
-        },
-        "especialidades": [
-            "Neurologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-915678901",
-            "email": "eduardo@hospital.com"
-        },
-        "documentos": {
-            "CPF": "78901234567",
-            "RG": "1056789012",
-            "CRM": "SP789012"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dra. Fernanda Costa",
-        "data_nascimento": ISODate("1983-11-30"),
-        "endereco": {
-            "logradouro": "Rua da Consolação",
-            "numero": "400",
-            "bairro": "Consolação",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01302000"
-        },
-        "especialidades": [
-            "Oftalmologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-916789012",
-            "email": "fernanda@hospital.com"
-        },
-        "documentos": {
-            "CPF": "89012345678",
-            "RG": "1167890123",
-            "CRM": "SP890123"
-        },
-        "em_atividade": false
-    },
-    {
-        "nome": "Dr. Ricardo Teixeira",
-        "data_nascimento": ISODate("1987-03-05"),
-        "endereco": {
-            "logradouro": "Rua Cardoso de Almeida",
-            "numero": "900",
-            "bairro": "Perdizes",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "05013001"
-        },
-        "especialidades": [
-            "Endocrinologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-917890123",
-            "email": "ricardo@hospital.com"
-        },
-        "documentos": {
-            "CPF": "90123456789",
-            "RG": "1278901234",
-            "CRM": "SP901234"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dra. Letícia Andrade",
-        "data_nascimento": ISODate("1992-06-12"),
-        "endereco": {
-            "logradouro": "Rua dos Franceses",
-            "numero": "350",
-            "bairro": "Bela Vista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01329000"
-        },
-        "tipo": "Residente",
-        "contato": {
-            "telefone": "55-11-918901234",
-            "email": "leticia@hospital.com"
-        },
-        "documentos": {
-            "CPF": "01234567890",
-            "RG": "1389012345",
-            "CRM": "SP012345"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dr. Felipe Almeida",
-        "data_nascimento": ISODate("1978-10-09"),
-        "endereco": {
-            "logradouro": "Rua dos Timbiras",
-            "numero": "1500",
-            "bairro": "Santa Ifigênia",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01208010"
-        },
-        "especialidades": [
-            "Urologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-919012345",
-            "email": "felipe@hospital.com"
-        },
-        "documentos": {
-            "CPF": "12345678901",
-            "RG": "1490123456",
-            "CRM": "SP123456"
-        },
-        "em_atividade": false
-    },
-    {
-        "nome": "Dra. Vanessa Oliveira",
-        "data_nascimento": ISODate("1984-08-19"),
-        "endereco": {
-            "logradouro": "Rua Piauí",
-            "numero": "123",
-            "bairro": "Higienópolis",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01241010"
-        },
-        "especialidades": [
-            "Reumatologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-920123456",
-            "email": "vanessa@hospital.com"
-        },
-        "documentos": {
-            "CPF": "23456789012",
-            "RG": "1501234567",
-            "CRM": "SP234567"
-        },
-        "em_atividade": true
-    }, {
-        "nome": "Dr. Leonardo Araújo",
-        "data_nascimento": ISODate("1980-08-10"),
-        "endereco": {
-            "logradouro": "Avenida Brigadeiro Faria Lima",
-            "numero": "1700",
-            "bairro": "Jardim Paulistano",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01452000"
-        },
-        "especialidades": [
-            "Ortopedia",
-            "Traumatologia",
-            "Medicina Esportiva"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-921345678",
-            "email": "leonardo@hospital.com"
-        },
-        "documentos": {
-            "CPF": "34567890123",
-            "RG": "5512345678",
-            "CRM": "SP234567"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dra. Camila Nogueira",
-        "data_nascimento": ISODate("1985-03-15"),
-        "endereco": {
-            "logradouro": "Rua Heitor Penteado",
-            "numero": "510",
-            "bairro": "Sumaré",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01257000"
-        },
-        "especialidades": [
-            "Pediatria",
-            "Alergologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-922456789",
-            "email": "camila@hospital.com"
-        },
-        "documentos": {
-            "CPF": "45678901234",
-            "RG": "6623456789",
-            "CRM": "SP345678"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dr. Roberto Lima",
-        "data_nascimento": ISODate("1979-12-02"),
-        "endereco": {
-            "logradouro": "Rua Frei Caneca",
-            "numero": "1020",
-            "bairro": "Consolação",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01307000"
-        },
-        "especialidades": [
-            "Gastroenterologia",
-            "Clínica Geral"
-        ],
-        "tipo": "Generalista",
-        "contato": {
-            "telefone": "55-11-923567890",
-            "email": "roberto@hospital.com"
-        },
-        "documentos": {
-            "CPF": "56789012345",
-            "RG": "7734567890",
-            "CRM": "SP456789"
-        },
-        "em_atividade": true
-    }, {
-        "nome": "Dr. Gabriel Almeida",
-        "data_nascimento": ISODate("1985-05-10"),
-        "endereco": {
-            "logradouro": "Rua dos Três Irmãos",
-            "numero": "100",
-            "bairro": "Vila Progredior",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "05522000"
-        },
-        "especialidades": [
-            "Cardiologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-912345678",
-            "email": "gabriel.almeida@gmail.com"
-        },
-        "documentos": {
-            "CPF": "12345678900",
-            "RG": "123456789",
-            "CRM": "SP123456"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dr. Gabriel Costa",
-        "data_nascimento": ISODate("1982-03-25"),
-        "endereco": {
-            "logradouro": "Avenida São João",
-            "numero": "200",
-            "bairro": "Centro",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01035000"
-        },
-        "especialidades": [
-            "Pediatria"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-934567890",
-            "email": "gabriel.costa@gmail.com"
-        },
-        "documentos": {
-            "CPF": "23456789012",
-            "RG": "234567890",
-            "CRM": "SP654321"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dr. Gabriel Oliveira",
-        "data_nascimento": ISODate("1978-08-30"),
-        "endereco": {
-            "logradouro": "Rua Augusta",
-            "numero": "1500",
-            "bairro": "Bela Vista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01305000"
-        },
-        "especialidades": [
-            "Dermatologia",
-            "Cirurgia Geral"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-912345679",
-            "email": "gabriel.oliveira@gmail.com"
-        },
-        "documentos": {
-            "CPF": "34567890123",
-            "RG": "345678901",
-            "CRM": "SP789456"
-        },
-        "em_atividade": false
-    },
-    {
-        "nome": "Dr. Gabriel Santos",
-        "data_nascimento": ISODate("1990-01-15"),
-        "endereco": {
-            "logradouro": "Avenida Ipiranga",
-            "numero": "300",
-            "bairro": "República",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01046000"
-        },
-        "especialidades": [
-            "Oftalmologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-976543210",
-            "email": "gabriel.santos@gmail.com"
-        },
-        "documentos": {
-            "CPF": "45678901234",
-            "RG": "456789012",
-            "CRM": "SP123789"
-        },
-        "em_atividade": true
-    },
-    {
-        "nome": "Dr. Gabriel Ferreira",
-        "data_nascimento": ISODate("1989-11-07"),
-        "endereco": {
-            "logradouro": "Rua Pamplona",
-            "numero": "500",
-            "bairro": "Jardim Paulista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01405000"
-        },
-        "especialidades": [
-            "Neurologia",
-            "Psiquiatria"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-945678901",
-            "email": "gabriel.ferreira@gmail.com"
-        },
-        "documentos": {
-            "CPF": "56789012345",
-            "RG": "567890123",
-            "CRM": "SP456123"
-        },
-        "em_atividade": false
-    },
-    {
-        "nome": "Dr. Gabriel Alves",
-        "data_nascimento": ISODate("1989-11-07"),
-        "endereco": {
-            "logradouro": "Rua Pamplona",
-            "numero": "550",
-            "bairro": "Jardim Paulista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01405000"
-        },
-        "especialidades": [
-            "Neurologia",
-            "gastroenterologia"
-        ],
-        "tipo": "Especialista",
-        "contato": {
-            "telefone": "55-11-945678901",
-            "email": "gabriel.ferreira@gmail.com"
-        },
-        "documentos": {
-            "CPF": "56789012345",
-            "RG": "567890123",
-            "CRM": "SP456123"
-        },
-        "em_atividade": false
-    }
-])
+Abaixo estão todos os scripts usados para popular o banco de dados:
 
+## Pacientes
+```js
+// FINALIZADO!! PACIENTES E CONSULTAS SINCRONIZADOS
+db.pacientes.insertMany([ {
+    "_id": ObjectId("671939c25a37072279c0b591"),
+    "nome": "Thiago Nascimento",
+    "data_nascimento": ISODate("1988-06-17T03:00:00.000Z"),
+    "altura": 1.89,
+    "peso": 90,
+    "endereco": {
+      "logradouro": "Rua dos Trabalhadores",
+      "numero": "75",
+      "bairro": "Campo Belo",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04618000"
+    },
+    "documentos": {
+      "CPF": "22334455678",
+      "CRM": "19032098786"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325322")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b592"),
+    "nome": "Maria Silva",
+    "data_nascimento": ISODate("1992-03-25T03:00:00.000Z"),
+    "altura": 1.65,
+    "peso": 62,
+    "endereco": {
+      "logradouro": "Avenida Paulista",
+      "numero": "1500",
+      "bairro": "Bela Vista",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01310000"
+    },
+    "documentos": {
+      "CPF": "33445566789",
+      "CRM": "19032098787"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325323")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b593"),
+    "nome": "João Santos",
+    "data_nascimento": ISODate("1975-11-12T02:00:00.000Z"),
+    "altura": 1.78,
+    "peso": 80,
+    "endereco": {
+      "logradouro": "Rua Augusta",
+      "numero": "2340",
+      "bairro": "Jardins",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01412000"
+    },
+    "documentos": {
+      "CPF": "44556677890",
+      "CRM": "19032098788"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325324")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b594"),
+    "nome": "Ana Oliveira",
+    "data_nascimento": ISODate("1983-09-05T03:00:00.000Z"),
+    "altura": 1.70,
+    "peso": 65,
+    "endereco": {
+      "logradouro": "Rua Oscar Freire",
+      "numero": "678",
+      "bairro": "Jardim Paulista",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01426000"
+    },
+    "documentos": {
+      "CPF": "55667788901",
+      "CRM": "19032098789"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325325")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b595"),
+    "nome": "Carlos Ferreira",
+    "data_nascimento": ISODate("1990-07-30T03:00:00.000Z"),
+    "altura": 1.82,
+    "peso": 85,
+    "endereco": {
+      "logradouro": "Alameda Santos",
+      "numero": "455",
+      "bairro": "Paraíso",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01419000"
+    },
+    "documentos": {
+      "CPF": "66778899012",
+      "CRM": "19032098790"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325326")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b596"),
+    "nome": "Patricia Lima",
+    "data_nascimento": ISODate("1987-04-15T03:00:00.000Z"),
+    "altura": 1.68,
+    "peso": 58,
+    "endereco": {
+      "logradouro": "Rua Pamplona",
+      "numero": "1023",
+      "bairro": "Jardim Paulista",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01405000"
+    },
+    "documentos": {
+      "CPF": "77889900123",
+      "CRM": "19032098791"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325327")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b597"),
+    "nome": "Ricardo Souza",
+    "data_nascimento": ISODate("1982-12-08T02:00:00.000Z"),
+    "altura": 1.75,
+    "peso": 78,
+    "endereco": {
+      "logradouro": "Rua Haddock Lobo",
+      "numero": "595",
+      "bairro": "Cerqueira César",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01414000"
+    },
+    "documentos": {
+      "CPF": "88990011234",
+      "CRM": "19032098792"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325328")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b598"),
+    "nome": "Fernanda Costa",
+    "data_nascimento": ISODate("1993-02-20T03:00:00.000Z"),
+    "altura": 1.72,
+    "peso": 63,
+    "endereco": {
+      "logradouro": "Rua da Consolação",
+      "numero": "3456",
+      "bairro": "Consolação",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01301000"
+    },
+    "documentos": {
+      "CPF": "99001122345",
+      "CRM": "19032098793"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325329")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b599"),
+    "nome": "Lucas Mendes",
+    "data_nascimento": ISODate("1985-08-25T03:00:00.000Z"),
+    "altura": 1.80,
+    "peso": 82,
+    "endereco": {
+      "logradouro": "Rua Estados Unidos",
+      "numero": "1288",
+      "bairro": "Jardim América",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "01427000"
+    },
+    "documentos": {
+      "CPF": "00112233456",
+      "CRM": "19032098794"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325330")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b600"),
+    "nome": "Beatriz Almeida",
+    "data_nascimento": ISODate("1991-05-17T03:00:00.000Z"),
+    "altura": 1.67,
+    "peso": 60,
+    "endereco": {
+      "logradouro": "Rua Joaquim Floriano",
+      "numero": "987",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04534000"
+    },
+    "documentos": {
+      "CPF": "11223344567",
+      "CRM": "19032098795"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325331")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b601"),
+    "nome": "Gabriel Santos",
+    "data_nascimento": ISODate("1989-10-03T03:00:00.000Z"),
+    "altura": 1.85,
+    "peso": 88,
+    "endereco": {
+      "logradouro": "Avenida Brigadeiro Faria Lima",
+      "numero": "3477",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04538000"
+    },
+    "documentos": {
+      "CPF": "22334455678",
+      "CRM": "19032098796"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325332")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b602"),
+    "nome": "Mariana Costa",
+    "data_nascimento": ISODate("1986-07-22T03:00:00.000Z"),
+    "altura": 1.69,
+    "peso": 61,
+    "endereco": {
+      "logradouro": "Rua Tabapuã",
+      "numero": "1234",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04533000"
+    },
+    "documentos": {
+      "CPF": "33445566789",
+      "CRM": "19032098797"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325333")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b603"),
+    "nome": "Felipe Rodrigues",
+    "data_nascimento": ISODate("1984-03-14T03:00:00.000Z"),
+    "altura": 1.83,
+    "peso": 87,
+    "endereco": {
+      "logradouro": "Rua Bandeira Paulista",
+      "numero": "567",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04532000"
+    },
+    "documentos": {
+      "CPF": "44556677890",
+      "CRM": "19032098798"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325334")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b604"),
+    "nome": "Camila Lima",
+    "data_nascimento": ISODate("1994-01-30T02:00:00.000Z"),
+    "altura": 1.71,
+    "peso": 64,
+    "endereco": {
+      "logradouro": "Rua João Cachoeira",
+      "numero": "890",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04535000"
+    },
+    "documentos": {
+      "CPF": "55667788901",
+      "CRM": "19032098799"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325335")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b605"),
+    "nome": "Rafael Oliveira",
+    "data_nascimento": ISODate("1981-12-05T02:00:00.000Z"),
+    "altura": 1.79,
+    "peso": 83,
+    "endereco": {
+      "logradouro": "Rua Clodomiro Amazonas",
+      "numero": "1432",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04537000"
+    },
+    "documentos": {
+      "CPF": "66778899012",
+      "CRM": "19032098800"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325336")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b606"),
+    "nome": "Julia Ferreira",
+    "data_nascimento": ISODate("1990-09-18T03:00:00.000Z"),
+    "altura": 1.66,
+    "peso": 59,
+    "endereco": {
+      "logradouro": "Rua Leopoldo Couto Magalhães Jr",
+      "numero": "758",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04542000"
+    },
+    "documentos": {
+      "CPF": "77889900123",
+      "CRM": "19032098801"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325337")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b607"),
+    "nome": "Bruno Santos",
+    "data_nascimento": ISODate("1987-06-27T03:00:00.000Z"),
+    "altura": 1.81,
+    "peso": 84,
+    "endereco": {
+      "logradouro": "Rua Amauri",
+      "numero": "345",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04536000"
+    },
+    "documentos": {
+      "CPF": "88990011234",
+      "CRM": "19032098802"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325338")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b608"),
+    "nome": "Carolina Silva",
+    "data_nascimento": ISODate("1992-04-09T03:00:00.000Z"),
+    "altura": 1.73,
+    "peso": 66,
+    "endereco": {
+      "logradouro": "Rua Manuel Guedes",
+      "numero": "321",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04536000"
+    },
+    "documentos": {
+      "CPF": "99001122345",
+      "CRM": "19032098803"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325339")
+  },  {
+    "_id": ObjectId("671939c25a37072279c0b610"),
+    "nome": "Rodrigo Mendonça",
+    "data_nascimento": ISODate("1986-08-14T03:00:00.000Z"),
+    "altura": 1.88,
+    "peso": 89,
+    "endereco": {
+      "logradouro": "Rua Pedroso Alvarenga",
+      "numero": "890",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04531011"
+    },
+    "documentos": {
+      "CPF": "12123434567",
+      "CRM": "19032098804"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325340")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b611"),
+    "nome": "Amanda Ribeiro",
+    "data_nascimento": ISODate("1991-03-22T03:00:00.000Z"),
+    "altura": 1.64,
+    "peso": 57,
+    "endereco": {
+      "logradouro": "Rua Campos Bicudo",
+      "numero": "456",
+      "bairro": "Jardim Europa",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04536041"
+    },
+    "documentos": {
+      "CPF": "23234545678",
+      "CRM": "19032098805"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325341")
+  },
+  {
+    "_id": ObjectId("671939c25a37072279c0b612"),
+    "nome": "Leonardo Martins",
+    "data_nascimento": ISODate("1983-11-30T02:00:00.000Z"),
+    "altura": 1.76,
+    "peso": 77,
+    "endereco": {
+      "logradouro": "Rua Joaquim Floriano",
+      "numero": "1250",
+      "bairro": "Itaim Bibi",
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "cep": "04534004"
+    },
+    "documentos": {
+      "CPF": "34345656789",
+      "CRM": "19032098806"
+    },
+    "convenio_id": ObjectId("67193973b62fc3ebf5325342")
+  }])
 ```
-
-# Inclua ao menos 15 pacientes
-
-```js 
- db.pacientes.insertMany([
-    {
-        "nome": "Paulo Santos",
-        "nome_social": "Joana Santos",
-        "data_nascimento": ISODate("1995-02-14"),
-        "altura": 1.86,
-        "peso": 76,
-        "sexo": "masculino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Rua A",
-            "numero": "10",
-            "bairro": "Centro",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "12345678"
-        },
-        "contato": {
-            "telefone": "55-11-92654843",
-            "email": "paulo@gmail.com"
-        },
-        "convenio": {
-            "nome": "Saúde",
-            "validade": ISODate("2021-12-31"),
-            "CNPJ": "23456789000102",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "98765432100",
-            "RG": "569574259"
-        }
-    }, 
-    {
-        "nome": "Renata Oliveira",
-        "data_nascimento": ISODate("1992-11-03"),
-        "altura": 1.68,
-        "peso": 60,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Rua dos Pinheiros",
-            "numero": "450",
-            "bairro": "Pinheiros",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "05422010"
-        },
-        "contato": {
-            "telefone": "55-11-921234567",
-            "email": "renata@gmail.com"
-        },
-        "convenio": {
-            "nome": "Saúde",
-            "validade": ISODate("2026-01-20"),
-            "CNPJ": "23456789000102",
-            "carencia": 30
-        },
-        "documentos": {
-            "CPF": "23456789012",
-            "RG": "678901234"
-        }
-    }, {
-        "nome": "Carlos Almeida",
-        "data_nascimento": ISODate("1975-06-12"),
-        "altura": 1.80,
-        "peso": 85,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "negro",
-        "endereco": {
-            "logradouro": "Rua Vergueiro",
-            "numero": "850",
-            "bairro": "Vila Mariana",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "04101000"
-        },
-        "contato": {
-            "telefone": "55-11-923456789",
-            "email": "carlos@gmail.com"
-        },
-        "convenio": {
-            "nome": "Saúde",
-            "validade": ISODate("2025-08-10"),
-            "CNPJ": "23456789000102",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "34567890123",
-            "RG": "567890123"
-        }
-    },
-    {
-        "nome": "Fernanda Souza",
-        "data_nascimento": ISODate("1985-10-24"),
-        "altura": 1.65,
-        "peso": 68,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Avenida Rebouças",
-            "numero": "2200",
-            "bairro": "Jardim Paulista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "05402000"
-        },
-        "contato": {
-            "telefone": "55-11-934567890",
-            "email": "fernanda@gmail.com"
-        },
-        "convenio": {
-            "nome": "Amil",
-            "validade": ISODate("2026-03-14"),
-            "CNPJ": "98765432100123",
-            "carencia": 30
-        },
-        "documentos": {
-            "CPF": "45678901234",
-            "RG": "678901234"
-        }
-    },
-    {
-        "nome": "Marcos Silva",
-        "data_nascimento": ISODate("1991-04-18"),
-        "altura": 1.90,
-        "peso": 92,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "pardo",
-        "endereco": {
-            "logradouro": "Rua da Consolação",
-            "numero": "550",
-            "bairro": "Consolação",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01302000"
-        },
-        "contato": {
-            "telefone": "55-11-945678901",
-            "email": "marcos@gmail.com"
-        },
-        "convenio": {
-            "nome": "Unimed",
-            "validade": ISODate("2024-11-30"),
-            "CNPJ": "11223344556677",
-            "carencia": 90
-        },
-        "documentos": {
-            "CPF": "56789012345",
-            "RG": "789012345"
-        }
-    },
-    {
-        "nome": "Aline Pereira",
-        "data_nascimento": ISODate("1989-09-07"),
-        "altura": 1.70,
-        "peso": 58,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "parda",
-        "endereco": {
-            "logradouro": "Rua dos Franceses",
-            "numero": "300",
-            "bairro": "Bela Vista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01329000"
-        },
-        "contato": {
-            "telefone": "55-11-956789012",
-            "email": "aline1@gmail.com"
-        },
-        "convenio": {
-            "nome": "Amil",
-            "validade": ISODate("2025-05-22"),
-            "CNPJ": "98765432100123",
-            "carencia": 30
-        },
-        "documentos": {
-            "CPF": "67890123456",
-            "RG": "890123456"
-        }
-    },
-    {
-        "nome": "Thiago Lopes",
-        "nome_social": "Sofia Lopes",
-        "data_nascimento": ISODate("1996-02-12"),
-        "altura": 1.78,
-        "peso": 75,
-        "sexo": "masculino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Rua dos Timbiras",
-            "numero": "800",
-            "bairro": "Santa Ifigênia",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01208010"
-        },
-        "contato": {
-            "telefone": "55-11-967890123",
-            "email": "thiago@gmail.com"
-        },
-        "convenio": {
-            "nome": "Saúde",
-            "validade": ISODate("2027-07-18"),
-            "CNPJ": "23456789000102",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "78901234567",
-            "RG": "901234567"
-        }
-    },
-    {
-        "nome": "João Batista",
-        "data_nascimento": ISODate("1980-07-15"),
-        "altura": 1.85,
-        "peso": 88,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "negro",
-        "endereco": {
-            "logradouro": "Rua Augusta",
-            "numero": "3000",
-            "bairro": "Cerqueira César",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01413000"
-        },
-        "contato": {
-            "telefone": "55-11-921234567",
-            "email": "joao@gmail.com"
-        },
-        "convenio": {
-            "nome": "Unimed",
-            "validade": ISODate("2025-02-15"),
-            "CNPJ": "11223344556677",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "12345678909",
-            "RG": "678901234"
-        }
-    },
-    {
-        "nome": "Patrícia Mendes",
-        "data_nascimento": ISODate("1990-10-05"),
-        "altura": 1.68,
-        "peso": 63,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Rua Oscar Freire",
-            "numero": "500",
-            "bairro": "Jardins",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01426000"
-        },
-        "contato": {
-            "telefone": "55-11-932345678",
-            "email": "patricia@gmail.com"
-        },
-        "convenio": {
-            "nome": "Amil",
-            "validade": ISODate("2024-11-05"),
-            "CNPJ": "98765432100123",
-            "carencia": 30
-        },
-        "documentos": {
-            "CPF": "23456789001",
-            "RG": "789012345"
-        }
-    },
-    {
-        "nome": "Lucas Costa",
-        "data_nascimento": ISODate("1987-01-21"),
-        "altura": 1.78,
-        "peso": 72,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "pardo",
-        "endereco": {
-            "logradouro": "Avenida Ipiranga",
-            "numero": "400",
-            "bairro": "Centro",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01046000"
-        },
-        "contato": {
-            "telefone": "55-11-943567890",
-            "email": "lucas@gmail.com"
-        },
-        "convenio": {
-            "nome": "Bradesco Saúde",
-            "validade": ISODate("2025-07-15"),
-            "CNPJ": "55667788990011",
-            "carencia": 90
-        },
-        "documentos": {
-            "CPF": "34567890123",
-            "RG": "890123456"
-        }
-    },
-    {
-        "nome": "Juliana Pereira",
-        "data_nascimento": ISODate("1995-12-12"),
-        "altura": 1.60,
-        "peso": 55,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "parda",
-        "endereco": {
-            "logradouro": "Rua dos Estudantes",
-            "numero": "650",
-            "bairro": "Liberdade",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01505000"
-        },
-        "contato": {
-            "telefone": "55-11-954567890",
-            "email": "juliana1@gmail.com"
-        },
-        "convenio": {
-            "nome": "Unimed",
-            "validade": ISODate("2026-03-20"),
-            "CNPJ": "11223344556677",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "45678901234",
-            "RG": "901234567"
-        }
-    },
-    {
-        "nome": "André Ferreira",
-        "nome_social": "Andréa Ferreira",
-        "data_nascimento": ISODate("1998-03-18"),
-        "altura": 1.76,
-        "peso": 70,
-        "sexo": "masculino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Rua do Arouche",
-            "numero": "900",
-            "bairro": "República",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01220000"
-        },
-        "contato": {
-            "telefone": "55-11-965678901",
-            "email": "andre@gmail.com"
-        },
-        "convenio": {
-            "nome": "Saúde",
-            "validade": ISODate("2027-05-15"),
-            "CNPJ": "23456789000102",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "56789012345",
-            "RG": "012345678"
-        }
-    },
-    {
-        "nome": "Marcelo Nogueira",
-        "data_nascimento": ISODate("1983-02-11"),
-        "altura": 1.82,
-        "peso": 78,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "branco",
-        "endereco": {
-            "logradouro": "Rua Cardoso de Almeida",
-            "numero": "345",
-            "bairro": "Perdizes",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "05013000"
-        },
-        "contato": {
-            "telefone": "55-11-912345678",
-            "email": "marcelo1@gmail.com"
-        },
-        "convenio": {
-            "nome": "Amil",
-            "validade": ISODate("2025-09-10"),
-            "CNPJ": "98765432100123",
-            "carencia": 30
-        },
-        "documentos": {
-            "CPF": "67890123456",
-            "RG": "012345678"
-        }
-    },
-    {
-        "nome": "Carla Vieira",
-        "data_nascimento": ISODate("1990-11-19"),
-        "altura": 1.65,
-        "peso": 62,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "parda",
-        "endereco": {
-            "logradouro": "Rua Clélia",
-            "numero": "450",
-            "bairro": "Lapa",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "05042000"
-        },
-        "contato": {
-            "telefone": "55-11-934567890",
-            "email": "carla@gmail.com"
-        },
-        "convenio": {
-            "nome": "Unimed",
-            "validade": ISODate("2026-04-05"),
-            "CNPJ": "11223344556677",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "78901234567",
-            "RG": "123456789"
-        }
-    },
-    {
-        "nome": "Ricardo Alves",
-        "data_nascimento": ISODate("1985-06-23"),
-        "altura": 1.77,
-        "peso": 80,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "branco",
-        "endereco": {
-            "logradouro": "Avenida Brasil",
-            "numero": "800",
-            "bairro": "Jardim América",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01431000"
-        },
-        "contato": {
-            "telefone": "55-11-945678901",
-            "email": "ricardo1@gmail.com"
-        },
-        "convenio": {
-            "nome": "Bradesco Saúde",
-            "validade": ISODate("2024-12-31"),
-            "CNPJ": "55667788990011",
-            "carencia": 90
-        },
-        "documentos": {
-            "CPF": "89012345678",
-            "RG": "234567890"
-        }
-    },
-    {
-        "nome": "Renato Lima",
-        "nome_social": "Renata Lima",
-        "data_nascimento": ISODate("1993-03-17"),
-        "altura": 1.74,
-        "peso": 73,
-        "sexo": "masculino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Rua Dr. Rafael de Barros",
-            "numero": "250",
-            "bairro": "Paraíso",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "04003040"
-        },
-        "contato": {
-            "telefone": "55-11-956789012",
-            "email": "renato@gmail.com"
-        },
-        "convenio": {
-            "nome": "Saúde",
-            "validade": ISODate("2026-10-10"),
-            "CNPJ": "23456789000102",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "90123456789",
-            "RG": "345678901"
-        }
-    },
-    {
-        "nome": "Luciana Carvalho",
-        "data_nascimento": ISODate("1994-12-05"),
-        "altura": 1.62,
-        "peso": 58,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "negra",
-        "endereco": {
-            "logradouro": "Rua Coronel Xavier de Toledo",
-            "numero": "520",
-            "bairro": "Centro",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "01048010"
-        },
-        "contato": {
-            "telefone": "55-11-967890123",
-            "email": "luciana1@gmail.com"
-        },
-        "convenio": {
-            "nome": "Amil",
-            "validade": ISODate("2025-07-01"),
-            "CNPJ": "98765432100123",
-            "carencia": 30
-        },
-        "documentos": {
-            "CPF": "01234567890",
-            "RG": "456789012"
-        }
-    },
-    {
-        "nome": "Lucas Ferreira",
-        "data_nascimento": ISODate("2010-03-15"),
-        "altura": 1.45,
-        "peso": 35,
-        "sexo": "masculino",
-        "genero": "masculino",
-        "etnia": "branco",
-        "endereco": {
-            "logradouro": "Rua das Flores",
-            "numero": "123",
-            "bairro": "Jardim Paulista",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "12345678"
-        },
-        "contato": {
-            "telefone": "55-11-934567843",
-            "email": "lucas.ferreira@gmail.com"
-        },
-        "convenio": {
-            "nome": "Amil",
-            "validade": ISODate("2025-09-15"),
-            "CNPJ": "12345678000199",
-            "carencia": 60
-        },
-        "documentos": {
-            "CPF": "12345678901",
-            "RG": "123456789"
-        }
-    },
-    {
-        "nome": "Mariana Souza",
-        "data_nascimento": ISODate("2012-06-20"),
-        "altura": 1.30,
-        "peso": 28,
-        "sexo": "feminino",
-        "genero": "feminino",
-        "etnia": "branca",
-        "endereco": {
-            "logradouro": "Avenida Central",
-            "numero": "456",
-            "bairro": "Centro",
-            "cidade": "São Paulo",
-            "estado": "SP",
-            "CEP": "98765432"
-        },
-        "contato": {
-            "telefone": "55-11-923456789",
-            "email": "mariana.souza@gmail.com"
-        },
-        "convenio": {
-            "nome": "Bradesco Saúde",
-            "validade": ISODate("2026-01-30"),
-            "CNPJ": "98765432000188",
-            "carencia": 90
-        },
-        "documentos": {
-            "CPF": "98765432100",
-            "RG": "987654321"
-        }
-    }
-])
+## Médicos
+```js
+db.medicos.insertMany()
 ```
-
-# Registre 20 consultas de diferentes pacientes e médicos
-
-```js 
+## Especialidades
+```js
+db.enfermeiros.insertMany([
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051f9"),
+    "nome": "Marcelo Silva",
+    "cpf": "78294561031",
+    "coren": "123456789"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fa"),
+    "nome": "Julia Fernandes",
+    "cpf": "45129836029",
+    "coren": "987654321"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fb"),
+    "nome": "Roberto Souza",
+    "cpf": "96385274100",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fc"),
+    "nome": "Camila Ribeiro",
+    "cpf": "10293847560",
+    "coren": "102938475"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fd"),
+    "nome": "Ana Beatriz",
+    "cpf": "20394857612",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fe"),
+    "nome": "Ricardo Almeida",
+    "cpf": "39485726109",
+    "coren": "453627819"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051ff"),
+    "nome": "Fernanda Costa",
+    "cpf": "50618372948",
+    "coren": "761029384"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605200"),
+    "nome": "Luis Oliveira",
+    "cpf": "67584930215",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605201"),
+    "nome": "Paula Monteiro",
+    "cpf": "73829465012",
+    "coren": "293847561"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605202"),
+    "nome": "Carlos Augusto",
+    "cpf": "82639475019",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605203"),
+    "nome": "Beatriz Mendes",
+    "cpf": "93718204659",
+    "coren": "120394857"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605204"),
+    "nome": "Gustavo Silva",
+    "cpf": "83910274658",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605205"),
+    "nome": "Sara Albuquerque",
+    "cpf": "94027536198",
+    "coren": "908172635"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605206"),
+    "nome": "Pedro Henrique",
+    "cpf": "05183746290",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605207"),
+    "nome": "Mariana Almeida",
+    "cpf": "16274839501",
+    "coren": "475829103"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605208"),
+    "nome": "Rafael Costa",
+    "cpf": "27384951607",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605209"),
+    "nome": "Priscila Andrade",
+    "cpf": "38495061782",
+    "coren": "374920485"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e60520a"),
+    "nome": "Renato Nunes",
+    "cpf": "49506173829",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e60520b"),
+    "nome": "Letícia Faria",
+    "cpf": "50618294738",
+    "coren": "584920371"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e60520c"),
+    "nome": "Felipe Machado",
+    "cpf": "61729384015",
+    "coren": ""
+  }
+]
+)
+```
+## Enfermeiros
+```js
+db.enfermeiros.insertMany([
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051f9"),
+    "nome": "Marcelo Silva",
+    "cpf": "78294561031",
+    "coren": "123456789"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fa"),
+    "nome": "Julia Fernandes",
+    "cpf": "45129836029",
+    "coren": "987654321"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fb"),
+    "nome": "Roberto Souza",
+    "cpf": "96385274100",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fc"),
+    "nome": "Camila Ribeiro",
+    "cpf": "10293847560",
+    "coren": "102938475"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fd"),
+    "nome": "Ana Beatriz",
+    "cpf": "20394857612",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051fe"),
+    "nome": "Ricardo Almeida",
+    "cpf": "39485726109",
+    "coren": "453627819"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e6051ff"),
+    "nome": "Fernanda Costa",
+    "cpf": "50618372948",
+    "coren": "761029384"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605200"),
+    "nome": "Luis Oliveira",
+    "cpf": "67584930215",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605201"),
+    "nome": "Paula Monteiro",
+    "cpf": "73829465012",
+    "coren": "293847561"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605202"),
+    "nome": "Carlos Augusto",
+    "cpf": "82639475019",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605203"),
+    "nome": "Beatriz Mendes",
+    "cpf": "93718204659",
+    "coren": "120394857"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605204"),
+    "nome": "Gustavo Silva",
+    "cpf": "83910274658",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605205"),
+    "nome": "Sara Albuquerque",
+    "cpf": "94027536198",
+    "coren": "908172635"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605206"),
+    "nome": "Pedro Henrique",
+    "cpf": "05183746290",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605207"),
+    "nome": "Mariana Almeida",
+    "cpf": "16274839501",
+    "coren": "475829103"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605208"),
+    "nome": "Rafael Costa",
+    "cpf": "27384951607",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e605209"),
+    "nome": "Priscila Andrade",
+    "cpf": "38495061782",
+    "coren": "374920485"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e60520a"),
+    "nome": "Renato Nunes",
+    "cpf": "49506173829",
+    "coren": ""
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e60520b"),
+    "nome": "Letícia Faria",
+    "cpf": "50618294738",
+    "coren": "584920371"
+  },
+  {
+    "_id": ObjectId("67193a5b1c9caeda5e60520c"),
+    "nome": "Felipe Machado",
+    "cpf": "61729384015",
+    "coren": ""
+  }
+]
+)
+```
+## Convenios
+```js
+db.convenios.insertMany([
+  {
+    "_id": ObjectId("67193973b62fc3ebf5325297"),
+    "nome": "Premium",
+    "cnpj": "12345678000199",
+    "tempo_carencia": "90 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais", "Internação hospitalar"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf5325298"),
+    "nome": "Standard",
+    "cnpj": "98765432000155",
+    "tempo_carencia": "60 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf5325299"),
+    "nome": "Gold",
+    "cnpj": "55667788000144",
+    "tempo_carencia": "30 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais", "Cirurgias de baixa complexidade"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a0"),
+    "nome": "Platinum",
+    "cnpj": "22334455000133",
+    "tempo_carencia": "45 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais", "Cirurgias de média complexidade", "Internação hospitalar"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a1"),
+    "nome": "Bronze",
+    "cnpj": "66778899000111",
+    "tempo_carencia": "120 dias",
+    "limites_cobertura": ["Consultas médicas"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a2"),
+    "nome": "Silver",
+    "cnpj": "44556677000122",
+    "tempo_carencia": "90 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais", "Tratamento odontológico"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a3"),
+    "nome": "Master",
+    "cnpj": "33445566000188",
+    "tempo_carencia": "",
+    "limites_cobertura": []
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a4"),
+    "nome": "Essencial",
+    "cnpj": "99887766000144",
+    "tempo_carencia": "15 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames de rotina"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a5"),
+    "nome": "Avançado",
+    "cnpj": "11223344000177",
+    "tempo_carencia": "60 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais", "Atendimento domiciliar"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a6"),
+    "nome": "Completo",
+    "cnpj": "22113355000155",
+    "tempo_carencia": "75 dias",
+    "limites_cobertura": ["Consultas médicas", "Internação hospitalar", "Cirurgias"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a7"),
+    "nome": "Econômico",
+    "cnpj": "33447722000166",
+    "tempo_carencia": "30 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a8"),
+    "nome": "Familia",
+    "cnpj": "55001122000199",
+    "tempo_carencia": "90 dias",
+    "limites_cobertura": ["Consultas médicas", "Internação em enfermaria"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252a9"),
+    "nome": "Sênior",
+    "cnpj": "77889944000166",
+    "tempo_carencia": "120 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames preventivos"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b0"),
+    "nome": "Executivo",
+    "cnpj": "99001133000122",
+    "tempo_carencia": "30 dias",
+    "limites_cobertura": ["Consultas médicas", "Check-up anual"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b1"),
+    "nome": "Essencial Plus",
+    "cnpj": "77665599000177",
+    "tempo_carencia": "60 dias",
+    "limites_cobertura": ["Consultas médicas", "Tratamento odontológico", "Fisioterapia"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b2"),
+    "nome": "Top Saúde",
+    "cnpj": "66554433000188",
+    "tempo_carencia": "20 dias",
+    "limites_cobertura": ["Consultas médicas", "Internação hospitalar", "Exames de imagem"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b3"),
+    "nome": "Padrão",
+    "cnpj": "88776655000166",
+    "tempo_carencia": "45 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b4"),
+    "nome": "Saúde Total",
+    "cnpj": "44332211000144",
+    "tempo_carencia": "90 dias",
+    "limites_cobertura": ["Consultas médicas", "Internação hospitalar", "Terapias alternativas"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b5"),
+    "nome": "Viver Bem",
+    "cnpj": "99880022000133",
+    "tempo_carencia": "15 dias",
+    "limites_cobertura": ["Consultas médicas"]
+  },
+  {
+    "_id": ObjectId("67193973b62fc3ebf53252b6"),
+    "nome": "Bem-Estar",
+    "cnpj": "11002233000199",
+    "tempo_carencia": "60 dias",
+    "limites_cobertura": ["Consultas médicas", "Exames laboratoriais", "Atendimento psicológico"]
+  }
+]
+)
+```
+## Consultas
+```js
+// PACIENTES FUNCIONANDO!!
 db.consultas.insertMany([
-    {
-        "data": ISODate("2018-06-25T10:00:00Z"),
-        "medico_id": ObjectId("788b3b9b0b1e6b1f1c1f1c1f"),
-        "paciente_id": ObjectId("5f8b3b9b0b1e6b1f1c1f1c1f"),
-        "valor": 200,
-        "conveniada": true,
-        "especialidade_buscada": "Pediatria",
-        "descricao": "Paciente com febre e tosse",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Paracetamol comprimidos",
-                    "quantidade": 10,
-                    "instrucoes": "Tomar 1 comprimido a cada 8 horas"
-                },
-                {
-                    "nome": "Ibuprofeno comprimidos",
-                    "quantidade": 12,
-                    "instrucoes": "Tomar 1 comprimido a cada 12 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Inalação com soro fisiológico",
-                    "frequencia": "2 vezes ao dia"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-08-15T09:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c50e"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c54b"),
-        "valor": 250,
-        "conveniada": false,
-        "especialidade_buscada": "Cardiologia",
-        "descricao": "Paciente relatando dores no peito e cansaço",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Aspirina comprimidos",
-                    "quantidade": 20,
-                    "instrucoes": "Tomar 1 comprimido a cada 12 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exercícios leves",
-                    "frequencia": "Caminhada de 30 minutos por dia"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-02-10T11:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c50f"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c54d"),
-        "valor": 180,
-        "conveniada": true,
-        "especialidade_buscada": "Dermatologia",
-        "descricao": "Paciente com erupções cutâneas e coceira",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Hidrocortisona creme",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar 2 vezes ao dia na área afetada"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Banhos de água fria",
-                    "frequencia": "Uma vez ao dia"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-11-03T14:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c510"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c554"),
-        "valor": 220,
-        "conveniada": true,
-        "especialidade_buscada": "Ortopedia",
-        "descricao": "Paciente com dor no joelho após lesão esportiva",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Diclofenaco comprimidos",
-                    "quantidade": 15,
-                    "instrucoes": "Tomar 1 comprimido a cada 12 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Fisioterapia",
-                    "frequencia": "3 vezes por semana"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-07-22T10:45:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c511"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c552"),
-        "valor": 300,
-        "conveniada": true,
-        "especialidade_buscada": "Neurologia",
-        "descricao": "Paciente com dores de cabeça persistentes e tontura",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Amitriptilina comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido à noite"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Sessões de acupuntura",
-                    "frequencia": "1 vez por semana"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-03-05T08:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c512"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c553"),
-        "valor": 150,
-        "conveniada": false,
-        "especialidade_buscada": "Pediatria",
-        "descricao": "Paciente com dor de garganta e febre alta",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Ibuprofeno xarope",
-                    "quantidade": 1,
-                    "instrucoes": "10 ml a cada 8 horas"
-                },
-                {
-                    "nome": "Amoxicilina suspensão",
-                    "quantidade": 1,
-                    "instrucoes": "5 ml a cada 12 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Repouso em casa",
-                    "frequencia": "Até a melhora dos sintomas"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-09-12T15:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c513"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c557"),
-        "valor": 180,
-        "conveniada": true,
-        "especialidade_buscada": "Endocrinologia",
-        "descricao": "Paciente com sintomas de fadiga e ganho de peso",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Levotiroxina comprimidos",
-                    "quantidade": 60,
-                    "instrucoes": "Tomar 1 comprimido em jejum diariamente"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Reeducação alimentar",
-                    "frequencia": "Acompanhamento mensal com nutricionista"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-06-01T16:15:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c514"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c555"),
-        "valor": 230,
-        "conveniada": false,
-        "especialidade_buscada": "Ginecologia",
-        "descricao": "Paciente com cólicas intensas e menstruação irregular",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Anticoncepcional oral",
-                    "quantidade": 21,
-                    "instrucoes": "Tomar 1 comprimido diariamente"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exames laboratoriais",
-                    "frequencia": "Realizar hemograma completo"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-01-18T10:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c515"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c550"),
-        "valor": 200,
-        "conveniada": true,
-        "especialidade_buscada": "Oftalmologia",
-        "descricao": "Paciente com visão embaçada e dores nos olhos",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Colírio lubrificante",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar 2 gotas em cada olho a cada 4 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Ajuste de lentes de contato",
-                    "frequencia": "Trocar mensalmente"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-12-07T11:45:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c516"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c54e"),
-        "valor": 170,
-        "conveniada": false,
-        "especialidade_buscada": "Otorrinolaringologia",
-        "descricao": "Paciente com zumbido nos ouvidos e perda auditiva leve",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Betahistina comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido a cada 12 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exame auditivo",
-                    "frequencia": "Realizar avaliação auditiva a cada 6 meses"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-05-03T13:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c517"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c558"),
-        "valor": 210,
-        "conveniada": true,
-        "especialidade_buscada": "Psiquiatria",
-        "descricao": "Paciente com insônia e episódios de ansiedade",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Clonazepam comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido antes de dormir"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Terapia comportamental",
-                    "frequencia": "Sessões semanais"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-11-14T09:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c511"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c555"),
-        "valor": 250,
-        "conveniada": true,
-        "especialidade_buscada": "Cardiologia",
-        "descricao": "Paciente com dor no peito e cansaço excessivo",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Atorvastatina comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido diariamente"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exame de eletrocardiograma",
-                    "frequencia": "Realizar 1 vez ao ano"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-02-11T14:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c510"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c54b"),
-        "valor": 180,
-        "conveniada": false,
-        "especialidade_buscada": "Ortopedia",
-        "descricao": "Paciente com dor nas costas e dificuldade de movimento",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Diclofenaco comprimidos",
-                    "quantidade": 20,
-                    "instrucoes": "Tomar 1 comprimido a cada 12 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Fisioterapia",
-                    "frequencia": "3 vezes por semana"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-10-05T11:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c519"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c550"),
-        "valor": 220,
-        "conveniada": true,
-        "especialidade_buscada": "Dermatologia",
-        "descricao": "Paciente com acne severa e manchas na pele",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Isotretinoína comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido ao dia"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Creme hidratante",
-                    "frequencia": "Aplicar 2 vezes ao dia"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-03-29T16:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c51a"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c557"),
-        "valor": 190,
-        "conveniada": false,
-        "especialidade_buscada": "Gastroenterologia",
-        "descricao": "Paciente com dor abdominal e refluxo frequente",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Omeprazol comprimidos",
-                    "quantidade": 28,
-                    "instrucoes": "Tomar 1 comprimido em jejum diariamente"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Dieta controlada",
-                    "frequencia": "Acompanhamento com nutricionista"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-12-19T13:15:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c51b"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c551"),
-        "valor": 200,
-        "conveniada": true,
-        "especialidade_buscada": "Oftalmologia",
-        "descricao": "Paciente com dificuldade de visão noturna",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Colírio lubrificante",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar 2 gotas antes de dormir"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exame de campo visual",
-                    "frequencia": "A cada 6 meses"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-12-05T10:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c512"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c556"),
-        "valor": 210,
-        "conveniada": true,
-        "especialidade_buscada": "Neurologia",
-        "descricao": "Paciente com dores de cabeça recorrentes",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Amitriptilina comprimidos",
-                    "quantidade": 20,
-                    "instrucoes": "Tomar 1 comprimido ao deitar"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Ressonância magnética",
-                    "frequencia": "Realizar uma vez para avaliação"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-01-20T14:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c513"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c559"),
-        "valor": 230,
-        "conveniada": false,
-        "especialidade_buscada": "Endocrinologia",
-        "descricao": "Paciente com fadiga e ganho de peso",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Levotiroxina comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido em jejum diariamente"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exame de TSH",
-                    "frequencia": "Realizar uma vez por semestre"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-02-02T16:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c514"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c552"),
-        "valor": 180,
-        "conveniada": true,
-        "especialidade_buscada": "Pediatria",
-        "descricao": "Paciente com sintomas gripais e febre alta",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Dipirona gotas",
-                    "quantidade": 1,
-                    "instrucoes": "Administrar 15 gotas a cada 6 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Hidratação e repouso",
-                    "frequencia": "Beber água frequentemente e descansar"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2023-11-15T09:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c515"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c558"),
-        "valor": 220,
-        "conveniada": false,
-        "especialidade_buscada": "Psiquiatria",
-        "descricao": "Paciente com ansiedade e insônia",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Clonazepam comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido ao deitar"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Terapia cognitivo-comportamental",
-                    "frequencia": "Sessões semanais"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-03-08T15:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c516"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c553"),
-        "valor": 240,
-        "conveniada": true,
-        "especialidade_buscada": "Oftalmologia",
-        "descricao": "Paciente com dificuldade para enxergar de perto",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Colírio hidratante",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar 1 gota 3 vezes ao dia"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exame de refração",
-                    "frequencia": "Realizar uma vez"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-04-10T11:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c517"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c554"),
-        "valor": 190,
-        "conveniada": true,
-        "especialidade_buscada": "Cardiologia",
-        "descricao": "Paciente com dor no peito e falta de ar",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Aspirina comprimidos",
-                    "quantidade": 30,
-                    "instrucoes": "Tomar 1 comprimido diariamente"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Exame de eletrocardiograma",
-                    "frequencia": "Realizar uma vez"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-05-05T13:30:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c518"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c555"),
-        "valor": 250,
-        "conveniada": false,
-        "especialidade_buscada": "Gastroenterologia",
-        "descricao": "Paciente com dores abdominais e náuseas",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Omeprazol cápsulas",
-                    "quantidade": 28,
-                    "instrucoes": "Tomar 1 cápsula pela manhã"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Ultrassom abdominal",
-                    "frequencia": "Realizar uma vez"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-06-15T09:15:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c519"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c556"),
-        "valor": 205,
-        "conveniada": true,
-        "especialidade_buscada": "Ortopedia",
-        "descricao": "Paciente com fratura no braço",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Dipirona gotas",
-                    "quantidade": 20,
-                    "instrucoes": "Administrar 15 gotas a cada 8 horas"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Imobilização com gesso",
-                    "frequencia": "Realizar uma vez"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-07-20T10:45:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c51a"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c557"),
-        "valor": 220,
-        "conveniada": false,
-        "especialidade_buscada": "Dermatologia",
-        "descricao": "Paciente com erupção cutânea",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Cremes tópicos",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar na área afetada 2 vezes ao dia"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Consulta de acompanhamento",
-                    "frequencia": "Marcar para 15 dias"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-08-30T14:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c51b"),
-        "paciente_id": ObjectId("66ee282007cbcc34c9b4c558"),
-        "valor": 195,
-        "conveniada": true,
-        "especialidade_buscada": "Oftalmologia",
-        "descricao": "Paciente com visão embaçada",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Colírio lubrificante",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar 2 gotas em cada olho 3 vezes ao dia"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Consulta de revisão",
-                    "frequencia": "Marcar para 3 meses"
-                }
-            ]
-        }
-    },
-    {
-        "data": ISODate("2024-08-30T14:00:00Z"),
-        "medico_id": ObjectId("66ee27e807cbcc34c9b4c51b"),
-        "paciente_id": ObjectId("66f45ed26f90520f9d2f41c7"),
-        "valor": 195,
-        "conveniada": true,
-        "especialidade_buscada": "Oftalmologia",
-        "descricao": "Paciente com visão embaçada",
-        "receita": {
-            "medicamentos": [
-                {
-                    "nome": "Colírio lubrificante",
-                    "quantidade": 1,
-                    "instrucoes": "Aplicar 2 gotas em cada olho 3 vezes ao dia"
-                }
-            ],
-            "tratamentos": [
-                {
-                    "nome": "Consulta de revisão",
-                    "frequencia": "Marcar para 3 meses"
-                }
-            ]
-        }
-    }
-]);
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50602"),
+    "data": ISODate("2023-01-15T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b591")  // Thiago Nascimento
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50603"),
+    "data": ISODate("2023-02-20T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b592")  // Maria Silva
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50604"),
+    "data": ISODate("2023-03-12T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b593")  // João Santos
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50605"),
+    "data": ISODate("2023-04-01T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b594")  // Ana Oliveira
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50606"),
+    "data": ISODate("2023-05-08T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b595")  // Carlos Ferreira
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50607"),
+    "data": ISODate("2023-06-15T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b596")  // Patricia Lima
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50608"),
+    "data": ISODate("2023-07-23T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b597")  // Ricardo Souza
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50609"),
+    "data": ISODate("2023-08-30T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b598")  // Fernanda Costa
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a5060a"),
+    "data": ISODate("2023-09-14T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b599")  // Lucas Mendes
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a5060b"),
+    "data": ISODate("2023-10-05T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b600")  // Beatriz Almeida
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a5060c"),
+    "data": ISODate("2023-10-18T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b601")  // Gabriel Santos
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a5060d"),
+    "data": ISODate("2023-11-12T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b602")  // Mariana Costa
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a5060e"),
+    "data": ISODate("2023-11-30T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b603")  // Felipe Rodrigues
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a5060f"),
+    "data": ISODate("2023-12-22T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b604")  // Camila Lima
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50610"),
+    "data": ISODate("2023-12-30T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650de"),
+    "paciente_id": ObjectId("671939c25a37072279c0b605")  // Rafael Oliveira
+  },
+  {
+    "_id": ObjectId("671939eb9ef617ec11a50611"),
+    "data": ISODate("2023-12-15T03:00:00.000Z"),
+    "medico_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "paciente_id": ObjectId("671939c25a37072279c0b606")  // Julia Ferreira
+  }
+]
+)
 ```

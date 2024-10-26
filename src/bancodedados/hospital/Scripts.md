@@ -2,6 +2,8 @@
 
 Abaixo estão todos os scripts usados para popular o banco de dados:
 
+* Nem todos os pacientes tem uma consulta para eles, mas toda consulta está ligada a um paciente já existente, o mesmo para os médicos, caso faça uma busca em consultas e não encontre uma ligada a seu paciente ou médico, tente com outro.
+* 
 ## Pacientes
 ```js
 db.pacientes.insertMany([ {

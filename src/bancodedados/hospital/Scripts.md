@@ -426,7 +426,364 @@ db.pacientes.insertMany([ {
 ```
 ## Médicos
 ```js
-db.medicos.insertMany()
+db.medicos.insertMany([
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650dc"),
+    "nome": "Matheus de Oliveira",
+    "data_nascimento": ISODate("2006-07-11T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044244"
+    ],
+    "contato": {
+      "telefone": "11987539647",
+      "email": "mathtml.1105@gmail.com"
+    },
+    "documentos": {
+      "CPF": "54144941850",
+      "CRM": "05814944145"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650dd"),
+    "nome": "Ana Clara",
+    "data_nascimento": ISODate("1985-02-22T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044245"
+    ],
+    "contato": {
+      "telefone": "11987654321",
+      "email": "anaclara@gmail.com"
+    },
+    "documentos": {
+      "CPF": "12345678900",
+      "CRM": "05814944146"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650de"),
+    "nome": "Lucas Ferreira",
+    "data_nascimento": ISODate("1990-05-15T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044246"
+    ],
+    "contato": {
+      "telefone": "11984561234",
+      "email": "lucas.ferreira@gmail.com"
+    },
+    "documentos": {
+      "CPF": "09876543210",
+      "CRM": "05814944147"
+    },
+    "status": false
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650df"),
+    "nome": "Juliana Santos",
+    "data_nascimento": ISODate("1995-03-30T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044247"
+    ],
+    "contato": {
+      "telefone": "11983456789",
+      "email": "juliana.santos@gmail.com"
+    },
+    "documentos": {
+      "CPF": "11223344556",
+      "CRM": "05814944148"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e0"),
+    "nome": "Fernando Lima",
+    "data_nascimento": ISODate("1988-08-20T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044248"
+    ],
+    "contato": {
+      "telefone": "11999887766",
+      "email": "fernando.lima@gmail.com"
+    },
+    "documentos": {
+      "CPF": "66778899000",
+      "CRM": "05814944149"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e1"),
+    "nome": "Mariana Costa",
+    "data_nascimento": ISODate("1992-12-05T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044249"
+    ],
+    "contato": {
+      "telefone": "11987766554",
+      "email": "mariana.costa@gmail.com"
+    },
+    "documentos": {
+      "CPF": "12312312312",
+      "CRM": "05814944150"
+    },
+    "status": false
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e2"),
+    "nome": "Gustavo Almeida",
+    "data_nascimento": ISODate("1983-10-17T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044250"
+    ],
+    "contato": {
+      "telefone": "11933334455",
+      "email": "gustavo.almeida@gmail.com"
+    },
+    "documentos": {
+      "CPF": "44455566677",
+      "CRM": "05814944151"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e3"),
+    "nome": "Isabela Martins",
+    "data_nascimento": ISODate("1994-06-09T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044251"
+    ],
+    "contato": {
+      "telefone": "11944445556",
+      "email": "isabela.martins@gmail.com"
+    },
+    "documentos": {
+      "CPF": "55566677788",
+      "CRM": "05814944152"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e4"),
+    "nome": "Rafael Souza",
+    "data_nascimento": ISODate("1987-09-14T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044252"
+    ],
+    "contato": {
+      "telefone": "11922223333",
+      "email": "rafael.souza@gmail.com"
+    },
+    "documentos": {
+      "CPF": "66677788899",
+      "CRM": "05814944153"
+    },
+    "status": false
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e5"),
+    "nome": "Roberta Lima",
+    "data_nascimento": ISODate("1991-01-11T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044253"
+    ],
+    "contato": {
+      "telefone": "11977788899",
+      "email": "roberta.lima@gmail.com"
+    },
+    "documentos": {
+      "CPF": "33344455566",
+      "CRM": "05814944154"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e6"),
+    "nome": "Tiago Martins",
+    "data_nascimento": ISODate("1996-03-23T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044254"
+    ],
+    "contato": {
+      "telefone": "11955566666",
+      "email": "tiago.martins@gmail.com"
+    },
+    "documentos": {
+      "CPF": "88899900011",
+      "CRM": "05814944155"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e7"),
+    "nome": "Fernanda Almeida",
+    "data_nascimento": ISODate("1990-07-20T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044255"
+    ],
+    "contato": {
+      "telefone": "11944455666",
+      "email": "fernanda.almeida@gmail.com"
+    },
+    "documentos": {
+      "CPF": "77788899900",
+      "CRM": "05814944156"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e8"),
+    "nome": "Aline Santos",
+    "data_nascimento": ISODate("1993-05-29T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044256"
+    ],
+    "contato": {
+      "telefone": "11955554433",
+      "email": "aline.santos@gmail.com"
+    },
+    "documentos": {
+      "CPF": "12332112332",
+      "CRM": "05814944157"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650e9"),
+    "nome": "Henrique Costa",
+    "data_nascimento": ISODate("1984-04-12T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044257"
+    ],
+    "contato": {
+      "telefone": "11977788888",
+      "email": "henrique.costa@gmail.com"
+    },
+    "documentos": {
+      "CPF": "33322211100",
+      "CRM": "05814944158"
+    },
+    "status": false
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650ea"),
+    "nome": "Roberto Silva",
+    "data_nascimento": ISODate("1995-08-30T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044258"
+    ],
+    "contato": {
+      "telefone": "11988887766",
+      "email": "roberto.silva@gmail.com"
+    },
+    "documentos": {
+      "CPF": "44433322211",
+      "CRM": "05814944159"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650eb"),
+    "nome": "Cláudia Mendes",
+    "data_nascimento": ISODate("1989-02-19T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044259"
+    ],
+    "contato": {
+      "telefone": "11922221111",
+      "email": "claudia.mendes@gmail.com"
+    },
+    "documentos": {
+      "CPF": "55566644433",
+      "CRM": "05814944160"
+    },
+    "status": false
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650ec"),
+    "nome": "Daniela Freitas",
+    "data_nascimento": ISODate("1986-11-01T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044260"
+    ],
+    "contato": {
+      "telefone": "11911112222",
+      "email": "daniela.freitas@gmail.com"
+    },
+    "documentos": {
+      "CPF": "44455566677",
+      "CRM": "05814944161"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650ed"),
+    "nome": "Vinícius Rocha",
+    "data_nascimento": ISODate("1980-03-07T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044261"
+    ],
+    "contato": {
+      "telefone": "11988888888",
+      "email": "vinicius.rocha@gmail.com"
+    },
+    "documentos": {
+      "CPF": "22233344455",
+      "CRM": "05814944162"
+    },
+    "status": true
+  },{
+    "_id": ObjectId("67193646c6d8b0a4761650ee"),
+    "nome": "Tatiane Ribeiro",
+    "data_nascimento": ISODate("1992-08-15T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044262"
+    ],
+    "contato": {
+      "telefone": "11912345678",
+      "email": "tatiane.ribeiro@gmail.com"
+    },
+    "documentos": {
+      "CPF": "55566677788",
+      "CRM": "05814944163"
+    },
+    "status": true
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650ef"),
+    "nome": "Eduardo Gomes",
+    "data_nascimento": ISODate("1983-04-10T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044263"
+    ],
+    "contato": {
+      "telefone": "11999998888",
+      "email": "eduardo.gomes@gmail.com"
+    },
+    "documentos": {
+      "CPF": "33344455566",
+      "CRM": "05814944164"
+    },
+    "status": false
+  },
+  {
+    "_id": ObjectId("67193646c6d8b0a4761650f0"),
+    "nome": "Sofia Martins",
+    "data_nascimento": ISODate("1994-05-30T03:00:00.000Z"),
+    "especialidades": [
+      "671934a66c655bc7d9044264"
+    ],
+    "contato": {
+      "telefone": "11987654321",
+      "email": "sofia.martins@gmail.com"
+    },
+    "documentos": {
+      "CPF": "11122233344",
+      "CRM": "05814944165"
+    },
+    "status": true
+  }
+])
 ```
 ## Especialidades
 ```js

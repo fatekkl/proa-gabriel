@@ -3,7 +3,8 @@
 Abaixo estão todos os scripts usados para popular o banco de dados:
 
 * Nem todos os pacientes tem uma consulta para eles, mas toda consulta está ligada a um paciente já existente, o mesmo para os médicos, caso faça uma busca em consultas e não encontre uma ligada a seu paciente ou médico, tente com outro.
-* 
+
+
 ## Pacientes
 ```js
 db.pacientes.insertMany([ {
@@ -1287,3 +1288,501 @@ db.consultas.insertMany([
 ]
 )
 ```
+
+
+# TASKS
+
+
+<ol>
+    <li>
+Todos os dados e o valor médio das consultas do ano de 2024 e das que foram feitas sob convênio.
+
+```js
+> db.consultas.aggregate([
+    {
+        $match: {
+            $or: [
+                { "data": { $gte: ISODate("2024-01-01"), $lte: ISODate("2024-12-31") } },
+                { "conveniada": true }
+            ]
+        }
+    },
+    {        
+        $group: {
+            "_id": null,
+            "media": { $avg: "$valor" },
+            "consultas": { $push: "$$ROOT" }
+        }
+    }
+  ])
+
+< {
+    _id: null,
+    media: 209.0909090909091,
+    consultas: [{ ... }]
+  }
+```
+</li>
+    <li>
+    Todos os dados das internações que tiveram data de alta maior que a data prevista para a alta.
+
+```js
+> db.internacoes.find(
+    {   
+        $expr: {
+            $gt: ["$data_efetiva_alta", "$data_prevista_alta" ]
+        }
+    }
+  )
+
+< {
+  _id: ObjectId('66f456096f90520f9d2f41c1'),
+  paciente_id: ObjectId('66ee282007cbcc34c9b4c554'),
+  medico_id: ObjectId('66ee27e807cbcc34c9b4c512'),
+  data_entrada: 2019-01-10T00:00:00.000Z,
+  data_prevista_alta: 2019-01-15T00:00:00.000Z,
+  data_efetiva_alta: 2019-01-17T00:00:00.000Z,
+  procedimentos: [
+    'Cirurgia',
+    'Tomografia'
+  ],
+  quarto_numero: 201,
+  quarto_id: ObjectId('66f197794fe19755df1eb9db'),
+  valor_diario: 350,
+  enfermeiro_id: [
+    ObjectId('66ee281b07cbcc34c9b4c53f'),
+    ObjectId('66ee281b07cbcc34c9b4c540')
+  ]
+  }  
+  { ... }
+```
+</li>
+    <li>
+    Receituário completo da primeira consulta registrada com receituário associado.
+
+```js
+> db.consultas.find({}, {
+    "data": 1,
+    "receita": 1
+  })
+  .sort({
+    "data": 1
+  })
+  .limit(
+    1
+  )
+
+<{
+    _id: ObjectId('66f409806f90520f9d2f419d'),
+    data: 2018-06-25T10:00:00.000Z,
+    receita: {
+        medicamentos: [
+        {
+            nome: 'Paracetamol comprimidos',
+            quantidade: 10,
+            instrucoes: 'Tomar 1 comprimido a cada 8 horas'
+        },
+        {
+            nome: 'Ibuprofeno comprimidos',
+            quantidade: 12,
+            instrucoes: 'Tomar 1 comprimido a cada 12 horas'
+        }
+        ],
+        tratamentos: [
+        {
+            nome: 'Inalação com soro fisiológico',
+            frequencia: '2 vezes ao dia'
+        }
+        ]
+    }
+  }
+```
+</li>
+    <li>
+    Todos os dados da consulta de maior valor e também da de menor valor (ambas as consultas não foram realizadas sob convênio).
+
+```js
+> db.consultas.find({    
+    "conveniada": false
+  })
+  .sort({
+    "valor": 1
+  })
+  .limit(
+    1
+  )
+
+<{
+    _id: ObjectId('66f409806f90520f9d2f41a2'),
+    data: 2024-03-05T08:30:00.000Z,
+    medico_id: ObjectId('66ee27e807cbcc34c9b4c512'),
+    paciente_id: ObjectId('66ee282007cbcc34c9b4c553'),
+    valor: 150,
+    conveniada: false,
+    especialidade_buscada: 'Pediatria',
+    descricao: 'Paciente com dor de garganta e febre alta',
+    receita: {
+    medicamentos: [
+        {
+        nome: 'Ibuprofeno xarope',
+        quantidade: 1,
+        instrucoes: '10 ml a cada 8 horas'
+        },
+        {
+        nome: 'Amoxicilina suspensão',
+        quantidade: 1,
+        instrucoes: '5 ml a cada 12 horas'
+        }
+    ],
+    tratamentos: [
+        {
+        nome: 'Repouso em casa',
+        frequencia: 'Até a melhora dos sintomas'
+        }
+    ]
+    }
+  }
+
+> db.consultas.find({    
+    "conveniada": false
+  })
+  .sort({
+    "valor": -1
+  })
+  .limit(
+    1
+  )
+
+< {
+    _id: ObjectId('66f409806f90520f9d2f419e'),
+    data: 2023-08-15T09:30:00.000Z,
+    medico_id: ObjectId('66ee27e807cbcc34c9b4c50e'),
+    paciente_id: ObjectId('66ee282007cbcc34c9b4c54b'),
+    valor: 250,
+    conveniada: false,
+    especialidade_buscada: 'Cardiologia',
+    descricao: 'Paciente relatando dores no peito e cansaço',
+    receita: {
+    medicamentos: [
+        {
+        nome: 'Aspirina comprimidos',
+        quantidade: 20,
+        instrucoes: 'Tomar 1 comprimido a cada 12 horas'
+        }
+    ],
+    tratamentos: [
+        {
+        nome: 'Exercícios leves',
+        frequencia: 'Caminhada de 30 minutos por dia'
+        }
+    ]
+    }
+  }
+```
+</li>
+    <li>
+    Todos os dados das internações em seus respectivos quartos, calculando o total da internação a partir do valor de diária do quarto e o número de dias entre a entrada e a alta.
+
+```js
+> db.internacoes.aggregate([
+    {
+        $addFields: {
+            "dias_internacao": {
+                $ceil: {
+                    $divide: [
+                        { $subtract: ["$data_efetiva_alta", "$data_entrada"] },
+                        1000 * 60 * 60 * 24
+                    ]
+                }
+            }
+        }
+    },
+    {
+        $addFields: {
+            total_internacao: {
+                $multiply: ["$dias_internacao", "$valor_diario"]
+            }
+        }
+    }
+ ])
+<
+```
+</li>
+    <li>
+    Data, procedimento e número de quarto de internações em quartos do tipo “apartamento”.
+
+```js
+> db.internacoes.aggregate([
+    {
+        $match: { 
+            "quarto_numero": 101
+        }
+    },
+    {
+        $project: {
+            "_id": 0,
+            "data_entrada": 1,
+            "procedimentos": 1,
+            "quarto_numero": 1
+        }
+    }
+  ])
+
+< {
+    data_entrada: 2019-02-12T00:00:00.000Z,
+    procedimentos: [
+    'Cirurgia',
+    'Exame de sangue'
+    ],
+    quarto_numero: 101
+  }
+```
+</li>
+    <li>
+    Nome do paciente, data da consulta e especialidade de todas as consultas em que os pacientes eram menores de 18 anos na data da consulta e cuja especialidade não seja “pediatria”, ordenando por data de realização da consulta.
+
+```js
+> db.consultas.aggregate([
+    {
+        $lookup: {
+            "from": "pacientes", 
+            "localField": "paciente_id", 
+            "foreignField": "_id", 
+            "as": "paciente_info" 
+        }
+    },
+    {
+        $unwind: "$paciente_info" 
+    },
+    {
+        $addFields: {
+            "idadePaciente": {
+                $dateDiff: {
+                    "startDate": "$paciente_info.data_nascimento", 
+                    "endDate": "$data",
+                    "unit": "year" 
+                }
+            }
+        }
+    },
+    {
+        $match: {
+            "idadePaciente": { $lt: 18 },
+            "especialidade_buscada": { $ne: "pediatria" } 
+        }
+    },
+    {
+        $project: {
+            "nomePaciente": "$paciente_info.nome", 
+            "dataConsulta": "$data", 
+            "especialidade": "$especialidade_buscada",
+            "idade": "$idadePaciente"
+        }
+    }
+])
+    .sort({
+        dataConsulta: 1
+    })
+
+< {
+    _id: ObjectId('66f464c66f90520f9d2f41c8'),
+    nomePaciente: 'Mariana Souza',
+    dataConsulta: 2024-08-30T14:00:00.000Z,
+    idade: 12
+  }
+```
+</li>
+    <li>
+    Nome do paciente, nome do médico, data da internação e procedimentos das internações realizadas por médicos da especialidade “gastroenterologia”, que tenham acontecido em “enfermaria”.
+
+```js
+> db.internacoes.aggregate([
+    {
+        $lookup: {
+            "from": "pacientes", 
+            "localField": "paciente_id", 
+            "foreignField": "_id", 
+            "as": "paciente_info" 
+        }
+    },
+    {
+        $unwind: "$paciente_info" 
+    },
+    {
+        $lookup: {
+            "from": "medicos", 
+            "localField": "medico_id", 
+            "foreignField": "_id", 
+            "as": "medico_info" 
+        }
+    },
+    {
+        $unwind: "$medico_info" 
+    }, 
+    {
+        $match: {
+            "medico_info.especialidades": "gastroenterologia",
+            $or: [
+                { "quarto_numero": 103 },
+                { "quarto_numero": 104 }
+            ]
+        }
+    },
+    {
+        $project: {
+            "_id": 0,
+            "nome_paciente": "$paciente_info.nome",
+            "nome_medico": "$medico_info.nome",
+            "data_internacao": "$data_entrada",
+            "procedimentos": "$procedimentos"
+        }
+    }
+])
+
+< {
+    nome_paciente: 'Aline Pereira',
+    nome_medico: 'Dr. Gabriel Alves',
+    data_internacao: 2024-09-01T00:00:00.000Z,
+    procedimentos: [
+    'Exame de sangue'
+    ]
+  }
+```
+</li>
+    <li>
+    Os nomes dos médicos, seus CRMs e a quantidade de consultas que cada um realizou.
+
+```js
+> db.consultas.aggregate([
+    {
+        $group: {
+            "_id": "$medico_id", 
+            "totalConsultas": { $sum: 1 }
+        }
+    },
+    {
+        $lookup: {
+            "from": "medicos", 
+            "localField": "_id", 
+            "foreignField": "_id", 
+            "as": "medico"
+        }
+    },
+    {
+        $unwind: "$medico" 
+    },
+    {
+        $project: {
+            "_id": 0,
+            "nome": "$medico.nome", 
+            "CRM": "$medico.documentos.CRM", 
+            "totalConsultas": 1 
+        }
+    }
+  ])
+
+< {
+    totalConsultas: 2,
+    nome: 'Dr. Carlos Menezes',
+    CRM: 'SP567890'
+  }
+  {
+    totalConsultas: 2,
+    nome: 'Dra. Vanessa Oliveira',
+    CRM: 'SP234567'
+  }
+  { ... }
+```
+</li>
+    <li>
+    Todos os médicos que tenham "Gabriel" no nome. 
+
+```js
+> db.medicos.find({
+    "nome": /Gabriel/i
+  })
+
+< {
+    _id: ObjectId('66ee27e807cbcc34c9b4c51b'),
+    nome: 'Dr. Gabriel Almeida',
+    data_nascimento: 1985-05-10T00:00:00.000Z,
+    endereco: {
+        logradouro: 'Rua dos Três Irmãos',
+        numero: '100',
+        bairro: 'Vila Progredior',
+        cidade: 'São Paulo',
+        estado: 'SP',
+        CEP: '05522000'
+    },
+    especialidades: [
+        'Cardiologia'
+    ],
+    tipo: 'Especialista',
+    contato: {
+        telefone: '55-11-912345678',
+        email: 'gabriel.almeida@gmail.com'
+    },
+    documentos: {
+        CPF: '12345678900',
+        RG: '123456789',
+        CRM: 'SP123456'
+    },
+    em_atividade: true
+  }
+  { ... }
+```
+</li>
+    <li>
+    Os nomes, CREs e número de internações de enfermeiros que participaram de mais de uma internação.
+
+```js
+> db.internacoes.aggregate([
+    { 
+        $unwind: "$enfermeiro_id" 
+    }, 
+    {
+        $group: {
+            "_id": "$enfermeiro_id",
+            "totalInternacoes": { $sum: 1 } 
+        }
+    },
+    { 
+        $match: {
+             "totalInternacoes": { $gte: 2 } 
+        } 
+    },
+    {
+        $lookup: {
+            "from": "enfermeiros", 
+            "localField": "_id", 
+            "foreignField": "_id", 
+            "as": "enfermeiro"
+        }
+    },
+    {
+        $unwind: "$enfermeiro"
+    },
+    {
+        $project: {
+            "_id": 0,
+            "enfermeiro_nome": "$enfermeiro.nome",
+            "enfermeiro_CRE": "$enfermeiro.documentos.CRE",
+            "totalInternacoes": 1 
+        }
+    }
+])
+
+< {
+    totalInternacoes: 2,
+    enfermeiro_nome: 'Enfermeira Camila Ribeiro',
+    enfermeiro_CRE: 'CRE65432'
+  }
+  {
+    totalInternacoes: 2,
+    enfermeiro_nome: 'Enfermeiro Carlos Pereira',
+    enfermeiro_CRE: 'CRE45678'
+  }
+  { ... }
+```
+</li>
+</ol>

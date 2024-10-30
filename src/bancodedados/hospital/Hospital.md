@@ -17,4 +17,4 @@ Consultas: Deve ser impresso um relatório sobre a receita, e permitir sua visua
 
 # Diagrama
 
-<img src="Diagrama.svg">
+<img src="Diagrama.jpeg">

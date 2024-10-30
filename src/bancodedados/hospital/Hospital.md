@@ -17,4 +17,7 @@ Consultas: Deve ser impresso um relatório sobre a receita, e permitir sua visua
 
 # Diagrama
 
-<img src="Diagrama.svg">
+<img src="Diagrama.jpeg">
+
+<p>Nesse diagrama, mantenho visível cada relação do banco de dados em que trabalhei, mostrando quais coleções estão se comunicando e utilizando dados entre si.
+As cores na tabela representam o nivel de proximidade ao hospital em si, sendo azul o mais próximo e laranja o mais distante.</p>

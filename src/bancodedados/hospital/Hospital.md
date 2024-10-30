@@ -14,3 +14,7 @@ Consultas: Deve ser impresso um relatório sobre a receita, e permitir sua visua
 * 
 * 
 * Dados pessoais = nome, data de nascimento, endereço, telefone, e-mail, CPF, RG
+
+# Diagrama
+
+<img src="Diagrama.svg">

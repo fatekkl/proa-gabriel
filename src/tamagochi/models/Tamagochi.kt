@@ -1,13 +1,6 @@
 package tamagochi.models
 
-class Tamagochi(
-    val name: String,
-    private var hunger: Int = 30,
-    private var happiness: Int = 50,
-    private var fatigue: Int = 0,
-    private var age: Int = 0,
-    private var alive: Boolean = true
-) {
+class Tamagochi(val name: String, private var hunger: Int = 30, private var happiness: Int = 50, private var fatigue: Int = 0, private var age: Int = 0, private var alive: Boolean = true) {
 
 
     fun eat() {

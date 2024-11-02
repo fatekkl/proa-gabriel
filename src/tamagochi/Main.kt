@@ -8,14 +8,15 @@ fun main () {
     println("Bem vindo ao Tamagochi!")
     println("Insira o nome de seu pet!")
     val petName = readln()
-    val rakan = Tamagochi(petName)
+    val rakan = Tamagochi("Matheus")
 
     while (true) {
         println("\nEscolha uma ação:")
         println("1. Alimentar $petName")
         println("2. Brincar com $petName")
         println("3. Status do $petName")
-        println("4. Sair")
+        println("4. Colocar $petName pra dormir")
+        println("5. Sair")
         
         val action = readln().toInt()
         
@@ -23,7 +24,8 @@ fun main () {
             1 -> rakan.eat()
             2 -> rakan.joke()
             3 -> rakan.status()
-            4 -> {
+            4 -> rakan.rest()
+            5 -> {
                 println("Encerrando tamagochi...")
 
                 return

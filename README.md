@@ -1,13 +1,39 @@
-# Instituto PROA
+# Instituto PROA - ProProfissão
 
-Este repositório é destinado à demonstração dos exercícios realizados durante o curso ProProfissão do Instituto PROA.
+**ProProfissão** é um curso focado na empregabilidade, onde os jovens são preparados nos núcleos **Técnico** e **Comportamental**.
 
-Os exercícios foram todos passados pelo professor Gabriel Augusto e têm o intuito de exercitar lógica de programação.
+- O núcleo **Técnico** desenvolve as competências técnicas dos alunos em **desenvolvimento mobile** por meio de trabalho em grupo, vivências corporativas, projetos e atividades práticas.
+- O núcleo **Comportamental** trabalha as competências socioemocionais e o perfil profissional dos alunos, por meio de atividades voltadas ao **autoconhecimento**, **propósito**, **carreira** e **mercado de trabalho**.
 
-## Hora de Codar
+Além disso, há o **DemoDay**, que é o trabalho de conclusão. Nesse evento, os jovens aplicam os conhecimentos técnicos e comportamentais adquiridos ao longo do curso.
 
-Os exercícios nomeados Hora de Codar realizam algumas tarefas simples, como calcular uma média, procurar itens em uma lista ou até criar um menu simples.
+---
+
+## Para que existe esse repositório?
+
+Este repositório foi criado para a **entrega das atividades** ao professor [Gabriel Augusto](https://github.com/gabaugusto) de forma organizada.
+
+---
+
+## Exercícios
+
+Dentro do Instituto PROA, os exercícios de lógica são chamados de **"Hora de Codar"**. Esses exercícios estão disponíveis nas seguintes [pastas](https://github.com/fatekkl/proa-gabriel/tree/main/src/exercicios/logica).
+
+---
 
 ## Hotel Therabithia
 
-O exercício nomeado "Hotel Therabithia" tem como objetivo solidificar o entendimento do funcionamento e da sintaxe da linguagem Kotlin, assim como aplicar os conceitos de Orientação a Objetos em seu estado mais simples. O hotel possui funcionalidades como cadastro de hóspedes e eventos, locação de postos de gasolina próximos, e consulta de hóspedes e eventos.
+O [Hotel Therabithia](https://github.com/fatekkl/proa-gabriel/tree/main/src/hotel/src) é uma junção de exercícios de lógica mais avançados, usados em um contexto prático para tarefas relacionadas à administração de um hotel. As atividades incluem:
+
+- **Captura de entrada e saída de hóspedes**
+- **Busca de hóspedes**
+- **Aluguel de quartos**
+- **Aluguel de auditórios**
+- **Localização das estações de combustível mais próximas**
+- **Filtro das estações mais 'em conta'**
+
+---
+
+No [Hotel Therabithia](https://github.com/fatekkl/proa-gabriel/tree/main/src/hotel/src) eu apliquei conceitos de Programação Orientada a Objetos, criando um diagrama de classes que mostra a estrutura da aplicação
+
+Este repositório é uma representação do aprendizado técnico e comportamental adquiridos no **Instituto PROA**.

@@ -34,7 +34,7 @@ fun main () {
         }
         rakan.pastTime()
         if(!rakan.isAlive()){
-            println("Infelizmente $petName foi de vasco...")
+            println("Infelizmente $petName não resistiu...")
             return
         }
     }
